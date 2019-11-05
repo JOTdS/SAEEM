@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDTSTable extends Migration
+class CreateDisciplinaTurmasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateDTSTable extends Migration
      */
     public function up()
     {
-        Schema::create('d__t_s', function (Blueprint $table) {
+        Schema::create('disciplina_turmas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateDTSTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('d__t_s');
+        Schema::dropIfExists('disciplina_turmas');
     }
 }
