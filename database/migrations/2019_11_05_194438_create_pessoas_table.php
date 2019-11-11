@@ -22,6 +22,8 @@ class CreatePessoasTable extends Migration
             $table->text('descricao')->nullable();
             $table->char('sexo', 1);
             $table->string('password');
+            $table->boolean('is_funcionario')->default(false);
+            $table->boolean('is_aluno')->default(false);
             $table->timestamps();
         });
     }

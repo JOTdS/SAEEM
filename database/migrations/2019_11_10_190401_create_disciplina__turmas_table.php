@@ -15,6 +15,10 @@ class CreateDisciplinaTurmasTable extends Migration
     {
         Schema::create('disciplina__turmas', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('turno');
+            $table->year('ano');
+            // $table->integer('disciplina_id');
+            // $table->integer('turma_id');
             $table->timestamps();
         });
     }
