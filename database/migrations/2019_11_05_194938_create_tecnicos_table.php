@@ -15,6 +15,9 @@ class CreateTecnicosTable extends Migration
     {
         Schema::create('tecnicos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('cargo');
+            $table->integer('funcionario_id');
+            // $table->integer('escola_id');
             $table->timestamps();
         });
     }
