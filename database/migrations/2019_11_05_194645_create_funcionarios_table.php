@@ -15,8 +15,8 @@ class CreateFuncionariosTable extends Migration
     {
         Schema::create('funcionarios', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('pessoa_id');
-            $table->integer('escola_id')->nullable();
+            $table->bigInteger('pessoa_id');
+            //$table->bigInteger('escola_id')->nullable(); //Tem uma tabela para a relação
             $table->boolean('is_gestor')->default(false);
             $table->boolean('is_tecnico')->default(false);
             $table->boolean('is_professor')->default(false);

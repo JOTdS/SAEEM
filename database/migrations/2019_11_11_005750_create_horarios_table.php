@@ -18,7 +18,7 @@ class CreateHorariosTable extends Migration
             $table->text('diaDaSemana');
             $table->time('horaInicio');
             $table->time('horaFim');
-            $table->integer('grade_horario_id');
+            $table->bigInteger('grade_horario_id');
             $table->timestamps();
         });
     }

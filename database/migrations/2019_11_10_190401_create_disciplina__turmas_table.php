@@ -17,8 +17,8 @@ class CreateDisciplinaTurmasTable extends Migration
             $table->bigIncrements('id');
             $table->string('turno');
             $table->year('ano');
-            // $table->integer('disciplina_id');
-            // $table->integer('turma_id');
+            $table->bigInteger('disciplina_id'); //Descomentando
+            $table->bigInteger('turma_id'); //Descomentando
             $table->timestamps();
         });
     }

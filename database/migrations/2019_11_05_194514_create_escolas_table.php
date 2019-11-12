@@ -20,6 +20,7 @@ class CreateEscolasTable extends Migration
             $table->text('endereco');
             $table->text('telefone');
             $table->text('modalidade');
+            $table->bigInteger('gestor_id'); //Add Key
             $table->integer('inep');
             $table->timestamps();
         });

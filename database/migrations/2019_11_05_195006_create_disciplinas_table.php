@@ -17,9 +17,9 @@ class CreateDisciplinasTable extends Migration
             $table->bigIncrements('id');
             $table->string('nome');
             $table->string('descricao')->nullable();
-            // $table->Integer('id_turma');
-            // $table->Integer('id_aluno');
-            // $table->Integer('id_professor');
+            //$table->bigInteger('turma_id'); //Tem uma tabela para a relação
+            $table->bigInteger('aluno_id'); //Descomentando
+            $table->bigInteger('professor_id'); //Descomentando
             $table->timestamps();
         });
     }

@@ -15,8 +15,8 @@ class CreateDisciplinaProfessorsTable extends Migration
     {
         Schema::create('disciplina__professors', function (Blueprint $table) {
             $table->bigIncrements('id');
-            // $table->integer('disciplina_id');
-            // $table->integer('professor_id');
+            $table->bigInteger('disciplina_id'); //Descomentando
+            $table->bigInteger('professor_id'); //Descomentando
             $table->timestamps();
         });
     }

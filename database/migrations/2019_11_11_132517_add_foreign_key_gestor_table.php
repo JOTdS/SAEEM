@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSeriesTable extends Migration
+class AddForeignKeyGestorTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateSeriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('series', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->text('modalidade')->nullable();
-            $table->text('descricao')->nullable();
-            $table->bigInteger('escola_id');
-            $table->timestamps();
+        Schema::table('gestors', function (Blueprint $table) {            
+            $table->foreign('funcionario_id')->references('id')->on('funcionarios');
         });
     }
 
@@ -29,6 +25,8 @@ class CreateSeriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('series');
+        Schema::table('gestors', function (Blueprint $table) {            
+            $table->dropForeign('gestors_funcionario_id_foreign');
+        });
     }
 }

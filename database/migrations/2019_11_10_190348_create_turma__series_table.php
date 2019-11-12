@@ -15,8 +15,8 @@ class CreateTurmaSeriesTable extends Migration
     {
         Schema::create('turma__series', function (Blueprint $table) {
             $table->bigIncrements('id');
-            // $table->integer('turma_id');
-            // $table->integer('serie_id');
+            $table->bigInteger('turma_id'); //Descomentando
+            $table->bigInteger('serie_id'); //Descomentando
             $table->timestamps();
         });
     }

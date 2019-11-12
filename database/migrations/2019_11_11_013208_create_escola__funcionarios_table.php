@@ -17,8 +17,8 @@ class CreateEscolaFuncionariosTable extends Migration
             $table->bigIncrements('id');
             $table->date('dataEntrada');
             $table->date('dataSaida');
-            // $table->integer('funcionario_id');
-            // $table->integer('escola_id');
+            $table->bigInteger('funcionario_id'); //Descomentando
+            $table->bigInteger('escola_id'); //Descomentando
             $table->timestamps();
         });
     }
