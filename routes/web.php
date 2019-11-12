@@ -18,3 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('/aluno/gravar', 'AlunoController@store')->name('/aluno/gravar');
+Route::get('/aluno/cadastrar', 'AlunoController@create')->name('/aluno/cadastrar');
