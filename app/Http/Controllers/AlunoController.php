@@ -42,7 +42,9 @@ class AlunoController extends Controller
         $pessoa = new Pessoa();
         $user = new User();
         
-        $this->validation($request);
+        $request->validate(Aluno::$rules, Aluno::$messages);
+        $request->validate(Pessoa::$rules, Pessoa::$messages);
+        $request->validate(User::$rules, User::$messages);
 
         $user->name = $request->nome;
         $user->email = $request->email;
@@ -62,33 +64,7 @@ class AlunoController extends Controller
         $aluno->filiacao = $request->filiacao;
         $aluno->pessoa_id = $pessoa->id;
         $aluno->save();
-        
-       /*  nome
-        email
-        filiacao
-        nascimento
-        cpf
-        telefone
-        endereco
-        descricao
-        sexo */
-
-        $user->save();
-        $pessoa->save();
-        $aluno->save();
     }
-
-    private function validation(Request $request){
-        return $request->validate([
-            'nome' => 'required|max:200',
-            'email' => 'required|unique:users,email|max:255|email',
-            'nascimento' => 'required|date',
-            'cpf' => 'required|unique:pessoas|max:11|min:11',
-            'endereco' => 'max:255',
-            'sexo' => 'required|max:1'
-        ]);
-    }
-
     /**
      * Display the specified resource.
      *

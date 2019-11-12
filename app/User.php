@@ -36,4 +36,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public static $rules = [
+        'email' => 'required|unique:users,email|max:100|min:4|email',        
+    ];
+
+    public static $messages = [
+        'email.min' => 'O email é muito pequeno (min 4 caracteres)',
+        'email.max' => 'O email é muito grande (max 100 caracteres)' 
+    ];
 }
