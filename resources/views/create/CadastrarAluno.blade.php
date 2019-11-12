@@ -4,15 +4,6 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
             <div class="card">
                 <div class="card-header">{{ __('Cadastrar Estoque') }}</div>
 
@@ -42,7 +33,7 @@
                         <div class="form-group row">
                             <label for="nascimento" class="col-md-4 col-form-label text-md-right">{{ __('Nascimento ') }}</label>
                             <div class="col-md-6">
-                              <input name="nascimento" id="nascimento" type="text" class="form-control" required value= {{ old('nascimento')}}> {{ $errors->first('nacimento')}}
+                              <input name="nascimento" id="nascimento" type="date" class="form-control" required value= {{ old('nascimento')}}> {{ $errors->first('nacimento')}}
                             </div>
                         </div>
                         <div class="form-group row">
