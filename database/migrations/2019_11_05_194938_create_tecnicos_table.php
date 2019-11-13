@@ -17,7 +17,7 @@ class CreateTecnicosTable extends Migration
             $table->bigIncrements('id');
             $table->string('cargo');
             $table->bigInteger('funcionario_id');
-            $table->bigInteger('escola_id'); //Descomentando
+            //$table->bigInteger('escola_id'); //Descomentando
             $table->timestamps();
         });
     }
