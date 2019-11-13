@@ -17,7 +17,7 @@ class CreateProfessorsTable extends Migration
             $table->bigIncrements('id');
             $table->string('formacao');
             $table->bigInteger('funcionario_id');
-            $table->bigInteger('escola_id'); //Descomentando
+            //$table->bigInteger('escola_id'); //Descomentando
             $table->timestamps();
         });
     }

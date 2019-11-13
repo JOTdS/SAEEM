@@ -15,7 +15,7 @@ class AddForeignKeyProfessorTable extends Migration
     {
         Schema::table('professors', function (Blueprint $table) {            
             $table->foreign('funcionario_id')->references('id')->on('funcionarios');
-            $table->foreign('escola_id')->references('id')->on('escolas');
+            //$table->foreign('escola_id')->references('id')->on('escolas');
         });
     }
 
@@ -28,7 +28,7 @@ class AddForeignKeyProfessorTable extends Migration
     {
         Schema::table('professors', function (Blueprint $table) {            
             $table->dropForeign('professors_funcionario_id_foreign');
-            $table->dropForeign('professors_escola_id_foreign');
+            //$table->dropForeign('professors_escola_id_foreign');
         });
     }
 }

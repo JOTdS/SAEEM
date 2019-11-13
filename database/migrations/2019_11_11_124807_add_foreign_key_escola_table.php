@@ -14,7 +14,7 @@ class AddForeignKeyEscolaTable extends Migration
     public function up()
     {
         Schema::table('escolas', function (Blueprint $table) {            
-            $table->foreign('gestor_id')->references('id')->on('gestors');
+            //$table->foreign('gestor_id')->references('id')->on('gestors');
         });
     }
 
@@ -26,7 +26,7 @@ class AddForeignKeyEscolaTable extends Migration
     public function down()
     {
         Schema::table('escolas', function (Blueprint $table) {            
-            $table->dropForeign('escolas_gestor_id_foreign');
+            //$table->dropForeign('escolas_gestor_id_foreign');
         });
     }
 }
