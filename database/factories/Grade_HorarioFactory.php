@@ -5,7 +5,7 @@
 use App\Model;
 use Faker\Generator as Faker;
 
-$factory->define(\App\Serie::class, function (Faker $faker) {
+$factory->define(\App\Grade_Horario::class, function (Faker $faker) {
 
     return [
         'descricao' => $faker->text(190),

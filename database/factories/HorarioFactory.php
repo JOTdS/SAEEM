@@ -9,8 +9,8 @@ $factory->define(\App\Horario::class, function (Faker $faker) {
 
     return [
         'diaDaSemana' => $faker->dayOfWeek,
-        'horaInicio' => $fake->time,
-        'horaFim' => $fake->time,
+        'horaInicio' => $faker->time,
+        'horaFim' => $faker->time,
         'grade_horario_id' => function(){return factory(\App\Grade_Horario::class)->create()->id;}
     ];
 });

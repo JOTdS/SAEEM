@@ -27,11 +27,11 @@ class LoginTest extends DuskTestCase
                 ->type('password_confirmation','testeteste')
                 ->press('Register')
                 //->pause(1000)
-                ->assertSee('You are logged in!')              
+                ->assertSee('You are logged in!')
                 ->pause(3000)
                 ->clickLink('Logout')
-                ->assertSee('SAEEM');                        
-                //->pause(5000);                         
+                ->assertSee('SAEEM');
+                //->pause(5000);
         });
     }
 }

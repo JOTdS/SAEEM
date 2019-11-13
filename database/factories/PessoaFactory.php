@@ -13,7 +13,7 @@ $factory->define(\App\Pessoa::class, function (Faker $faker) {
             'telefone' => $faker->phoneNumber,
             'endereco' => $faker->address,
             'descricao' => $faker->text(200),
-            'password' => $faker->text(32),
-            'sexo' => $sexo[$faker->numberBetween(0,1)]            
+            //'password' => $faker->text(32),  //desconecatado
+            'sexo' => $sexo[$faker->numberBetween(0,1)]
     ];
 });

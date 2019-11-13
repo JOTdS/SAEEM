@@ -16,11 +16,10 @@ class DatabaseSeeder extends Seeder
         $this->call(ProfessorSeeder::class);
         $this->call(TecnicoSeeder::class);
         $this->call(AlunoSeeder::class);
-        //$this->call(SerieSeeder::class);
-
-        // $this->call(TurmaSeeder::class);
-        // $this->call(DisciplinaSeeder::class);
-        // $this->call(GradeHorarioSeeder::class);
-        // $this->call(HorarioSeeder::class);
+        $this->call(SerieSeeder::class);
+        $this->call(TurmaSeeder::class);
+        $this->call(DisciplinaSeeder::class);
+        $this->call(Grade_HorarioSeeder::class);
+        $this->call(HorarioSeeder::class);
     }
 }

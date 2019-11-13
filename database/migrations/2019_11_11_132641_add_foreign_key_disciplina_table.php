@@ -13,9 +13,9 @@ class AddForeignKeyDisciplinaTable extends Migration
      */
     public function up()
     {
-        Schema::table('disciplinas', function (Blueprint $table) {            
-            $table->foreign('aluno_id')->references('id')->on('alunos');
-            $table->foreign('professor_id')->references('id')->on('professors');
+        Schema::table('disciplinas', function (Blueprint $table) {
+            //$table->foreign('aluno_id')->references('id')->on('alunos');           //ja tem uma tabela para isso
+            //$table->foreign('professor_id')->references('id')->on('professors');   //ja tem uma tabela para isso
         });
     }
 
@@ -26,9 +26,9 @@ class AddForeignKeyDisciplinaTable extends Migration
      */
     public function down()
     {
-        Schema::table('disciplinas', function (Blueprint $table) {            
-            $table->dropForeign('disciplinas_aluno_id_foreign');
-            $table->dropForeign('disciplinas_professor_id_foreign');
+        Schema::table('disciplinas', function (Blueprint $table) {
+            //$table->dropForeign('disciplinas_aluno_id_foreign');       //ja tem uma tabela para isso
+            //$table->dropForeign('disciplinas_professor_id_foreign');  //ja tem uma tabela para isso
         });
     }
 }
