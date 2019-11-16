@@ -47,7 +47,6 @@ class GestorController extends Controller
       $request->validate(Gestor::$rules, Gestor::$messages);
       $request->validate(Pessoa::$rules, Pessoa::$messages);
       $request->validate(User::$rules, User::$messages);
-      //$request->validate(Funcionario::$rules, Funcionario::$messages);
 
       $user->name = $request->nome;
       $user->email = $request->email;

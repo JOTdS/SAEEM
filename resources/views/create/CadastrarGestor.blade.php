@@ -37,7 +37,7 @@
                         <div class="form-group row">
                             <label for="telefone" class="col-md-4 col-form-label text-md-right">{{ __('Telefone ') }}</label>
                             <div class="col-md-6">
-                              <input name="telefone" id="telefone" type="text" class="form-control" required value= {{ old('telefone')}}> {{ $errors->first('telefone')}}
+                              <input name="telefone" id="telefone" type="text" class="form-control" > {{ $errors->first('telefone')}} <!--require deste campo foi removido para testes-->
                             </div>
                         </div>
                         <div class="form-group row">
