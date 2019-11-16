@@ -19,19 +19,19 @@ class LoginTest extends DuskTestCase
             $browser->visit('/')
                 ->assertSee('SAEEM')
                 ->clickLink('Register')
-                //->pause(3000)
+                ->pause(3000)
                 ->assertSee('E-Mail Address')
                 ->type('name', 'Teste')
                 ->type('email','teste@teste')
                 ->type('password','testeteste')
                 ->type('password_confirmation','testeteste')
                 ->press('Register')
-                //->pause(1000)
+                ->pause(1000)
                 ->assertSee('You are logged in!')
                 ->pause(3000)
                 ->clickLink('Logout')
-                ->assertSee('SAEEM');
-                //->pause(5000);
+                ->assertSee('SAEEM')
+                ->pause(3000);
         });
     }
 }

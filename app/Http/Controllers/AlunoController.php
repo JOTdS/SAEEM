@@ -64,6 +64,8 @@ class AlunoController extends Controller
         $aluno->filiacao = $request->filiacao;
         $aluno->pessoa_id = $pessoa->id;
         $aluno->save();
+
+        redirect()->route('/aluno/listar');
     }
     /**
      * Display the specified resource.
@@ -74,6 +76,10 @@ class AlunoController extends Controller
     public function show($id)
     {
         //
+    }
+    public function listar(){
+        $pessoas = \App\Pessoa::orderBy('id')->get();
+        return view("/show/ListarAlunos", ["pessoas" => $pessoas]);
     }
 
     /**
