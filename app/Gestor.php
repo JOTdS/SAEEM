@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Gestor extends Model
 {
   protected $fillable = [
-      'formacao'
+      'formacaoGestor'
   ];
 
   public static $rules = [
-      'formacao' => 'required|max:200|min:5|string'
+      'formacaoGestor' => 'required|string'
   ];
 
   public static $messages = [

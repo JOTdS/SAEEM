@@ -15,7 +15,7 @@ class CreateGestorsTable extends Migration
     {
         Schema::create('gestors', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('formacao');
+            $table->string('formacaoGestor');
             $table->bigInteger('funcionario_id');
             $table->timestamps();
         });

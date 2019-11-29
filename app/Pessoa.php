@@ -13,7 +13,7 @@ class Pessoa extends Model
         'sexo'
     ];
 
-    public static $rules = [        
+    public static $rules = [
         'nome' => 'required|max:100|string',
         'cpf' => 'required|unique:pessoas|max:11|min:11',
         'telefone' => 'required',
@@ -25,7 +25,7 @@ class Pessoa extends Model
     public static $messages = [
         'required' => 'O Campo :attribute é obrigatório',
         'string' => 'O campo :atribute deve ser um texto',
-        'nome.max' => 'O nome é muito grande (max 100 caracteres)',
+        'nome.max' => 'O nome é muito grande (max 100 caracteres)',        
         'sexo.max' => 'O sexo deve ser definido com a inicial do gênero',
         'endereco.max' => 'O endereço é muito grande (max 255 caracteres)',
         'cpf.max' => 'O cpf deve ser definido com 11 caracteres',

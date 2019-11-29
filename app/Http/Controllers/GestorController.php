@@ -1,14 +1,11 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Http\Request;
 use App\User;
 use App\Gestor;
 use App\Pessoa;
 use App\Funcionario;
-
 class GestorController extends Controller
 {
   /**
@@ -20,7 +17,6 @@ class GestorController extends Controller
   {
       //
   }
-
   /**
    * Show the form for creating a new resource.
    *
@@ -30,7 +26,6 @@ class GestorController extends Controller
   {
       return view('create/CadastrarGestor');
   }
-
   /**
    * Store a newly created resource in storage.
    *
@@ -43,16 +38,13 @@ class GestorController extends Controller
       $funcionario = new Funcionario();
       $gestor = new Gestor();
       $user = new User();
-
       $request->validate(Gestor::$rules, Gestor::$messages);
       $request->validate(Pessoa::$rules, Pessoa::$messages);
       $request->validate(User::$rules, User::$messages);
-
       $user->name = $request->nome;
       $user->email = $request->email;
       $user->password = password_hash($request->cpf, PASSWORD_DEFAULT);
       $user->save();
-
       $pessoa->nome = $request->nome;
       $pessoa->cpf = $request->cpf;
       $pessoa->telefone = $request->telefone;
@@ -61,25 +53,20 @@ class GestorController extends Controller
       $pessoa->descricao = $request->descricao;
       $pessoa->usuario_id = $user->id;
       $pessoa->save();
-
       $funcionario->pessoa_id = $pessoa->id;
       $funcionario->is_gestor = true;
       $funcionario->save();
-
-      $gestor->formacao = $request->formacao;
-      $gestor->funcionario_id = $funcionario->id;
-      $gestor->save();
-
+      // $gestor->formacao = $request->formacao;
+      // $gestor->funcionario_id = $funcionario->id;
+      // $gestor->save();
       return redirect('gestor/listar');
   }
-
   public function listar()
   {
       //$gestores = Pessoa::all();
      $pessoas = \App\Pessoa::orderBy('id')->get();
       return view('show/ListarGestor', ['pessoas' => $pessoas]);
   }
-
   /**
    * Display the specified resource.
    *
@@ -91,7 +78,6 @@ class GestorController extends Controller
       $gestores = Gestor::all();
       return view('show/ListarGestor', ['gestores' => $gestores]);
   }
-
   /**
    * Show the form for editing the specified resource.
    *
@@ -102,7 +88,6 @@ class GestorController extends Controller
   {
       //
   }
-
   /**
    * Update the specified resource in storage.
    *
@@ -114,7 +99,6 @@ class GestorController extends Controller
   {
       //
   }
-
   /**
    * Remove the specified resource from storage.
    *
@@ -125,12 +109,10 @@ class GestorController extends Controller
   {
       //
   }
-
   /**
    * Display the specified resource.
    *
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-
 }

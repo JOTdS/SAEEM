@@ -27,3 +27,12 @@ Route::get('/aluno/listar', 'AlunoController@listar')->name('/aluno/listar');
 Route::post('/gestor/gravar', 'GestorController@store')->name('/gestor/gravar');
 Route::get('/gestor/cadastrar', 'GestorController@create')->name('/gestor/cadastrar');
 Route::get('/gestor/listar', 'GestorController@listar')->name('/gestor/listar');
+
+
+//rotas de funcionario
+Route::post('/funcionario/gravar', 'FuncionarioController@store')->name('/funcionario/gravar');
+Route::get('/funcionario/cadastrar', 'FuncionarioController@create')->name('/funcionario/cadastrar');
+Route::get('/funcionario/listar', 'FuncionarioController@listar')->name('/funcionario/listar');
+Route::get('/funcionario/editar/{id}', 'FuncionarioController@viewInfo')->name('/funcionario/viewInfo');
+Route::post('/funcionario/atualizar','FuncionarioController@editar')->name('/funcionario/atualizar');
+Route::get('/funcionario/remover/{id}', 'FuncionarioController@remover')->name('/funcionario/remover');
