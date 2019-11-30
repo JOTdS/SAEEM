@@ -1,0 +1,99 @@
+.dropbtn {
+    background-color: #f3f3f3;
+    color: #3f3f3f;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    transition:all 0.3s ease;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 200px;
+    z-index: 1;
+    background:transparent;
+}
+
+.dropdown-content a {
+    color: #3f3f3f;
+    text-decoration: none;
+    display: block;
+    border-radius: 20px;
+    background:gray;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(63,63,63,.2);
+    background-color: rgba(220,220,220,1);
+    margin-bottom: 2px;
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(250,250,250,1);
+    color: #3f3f3f;
+    border-radius: 15px;
+    font: 16px bold;
+}
+
+
+.dropdown-content:hover a:hover {
+    background-color: rgba(240,240,240,1);
+    color: #3f3f3f;
+    border-radius: 15px;
+    font: 16px bold;
+    border-width: 3px;
+    border-style: solid;
+    border-color: rgba(63,63,63,.2);
+    margin-bottom: 2px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    border-radius: 15px;
+}
+.dropdown:hover .dropbtn {
+    font: 16px bolder;
+    border-radius: 10px;
+    background-color: rgba(250,250,250,1);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(63,63,63,.2);
+    margin-bottom: 5px;
+}
+
+.redireciona{
+    background-color:rgba(0,170,187);
+}
+
+.redireciona:hover{
+    background-color:rgba(0,170,187,.5);
+}
+.dropbtn{
+    background-color: transparent;
+}
+
+.navbar-brand{
+    font-size: 30px;
+}
+
+.navbar-laravel{
+    background-color: rgba(250,250,250,1);
+}
+
+.navbar-laravel:hover{
+    background-color: rgba(250,250,250,1);
+}
+
+
+.navbar:hover .dropdown{
+    display: block;
+}
+
+.navbar:hover .dropbtn{
+    display: block;
+}
