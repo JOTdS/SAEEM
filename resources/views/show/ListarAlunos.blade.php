@@ -38,6 +38,7 @@
                                     <td data-title="cpf">{{ $pessoa->cpf }}</td>
                                     <td data-title="telefone">{{ $pessoa->telefone }}</td>
                                     <td data-title="endereco">{{ $pessoa->endereco }}</td>
+                                    <td data-title="Acoes"> <a href="/aluno/editar/{{$pessoa->usuario_id}}" class="btn btn-info">Editar</a> </td>
                                 </tr>
                               @endforeach
 

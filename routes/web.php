@@ -19,20 +19,23 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('/aluno/gravar', 'AlunoController@store')->name('/aluno/gravar');
-Route::get('/aluno/cadastrar', 'AlunoController@create')->name('/aluno/cadastrar');
-Route::get('/aluno/listar', 'AlunoController@listar')->name('/aluno/listar');
+Route::post('/aluno/gravar', 'AlunoController@store')->name('/aluno/gravar')->middleware('auth');
+Route::get('/aluno/cadastrar', 'AlunoController@create')->name('/aluno/cadastrar')->middleware('auth');
+Route::get('/aluno/listar', 'AlunoController@listar')->name('/aluno/listar')->middleware('auth');
+Route::get('/aluno/editar/{id}', 'AlunoController@edit')->name('/aluno/editar')->middleware('auth');
+Route::post('/aluno/update', 'AlunoController@update')->name('/aluno/update')->middleware('auth');
+Route::get('/aluno/remover/{id}', 'AlunoController@remove')->name('/aluno/remover')->middleware('auth');
 
 //rotas de gestor
-Route::post('/gestor/gravar', 'GestorController@store')->name('/gestor/gravar');
-Route::get('/gestor/cadastrar', 'GestorController@create')->name('/gestor/cadastrar');
-Route::get('/gestor/listar', 'GestorController@listar')->name('/gestor/listar');
+Route::post('/gestor/gravar', 'GestorController@store')->name('/gestor/gravar')->middleware('auth');
+Route::get('/gestor/cadastrar', 'GestorController@create')->name('/gestor/cadastrar')->middleware('auth');
+Route::get('/gestor/listar', 'GestorController@listar')->name('/gestor/listar')->middleware('auth');
 
 
 //rotas de funcionario
-Route::post('/funcionario/gravar', 'FuncionarioController@store')->name('/funcionario/gravar');
-Route::get('/funcionario/cadastrar', 'FuncionarioController@create')->name('/funcionario/cadastrar');
-Route::get('/funcionario/listar', 'FuncionarioController@listar')->name('/funcionario/listar');
-Route::get('/funcionario/editar/{id}', 'FuncionarioController@viewInfo')->name('/funcionario/viewInfo');
-Route::post('/funcionario/atualizar','FuncionarioController@editar')->name('/funcionario/atualizar');
-Route::get('/funcionario/remover/{id}', 'FuncionarioController@remover')->name('/funcionario/remover');
+Route::post('/funcionario/gravar', 'FuncionarioController@store')->name('/funcionario/gravar')->middleware('auth');
+Route::get('/funcionario/cadastrar', 'FuncionarioController@create')->name('/funcionario/cadastrar')->middleware('auth');
+Route::get('/funcionario/listar', 'FuncionarioController@listar')->name('/funcionario/listar')->middleware('auth');
+Route::get('/funcionario/editar/{id}', 'FuncionarioController@viewInfo')->name('/funcionario/viewInfo')->middleware('auth');
+Route::post('/funcionario/atualizar','FuncionarioController@editar')->name('/funcionario/atualizar')->middleware('auth');
+Route::get('/funcionario/remover/{id}', 'FuncionarioController@remover')->name('/funcionario/remover')->middleware('auth');
