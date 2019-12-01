@@ -25,6 +25,7 @@ Route::get('/aluno/listar', 'AlunoController@listar')->name('/aluno/listar')->mi
 Route::get('/aluno/editar/{id}', 'AlunoController@edit')->name('/aluno/editar')->middleware('auth');
 Route::post('/aluno/update', 'AlunoController@update')->name('/aluno/update')->middleware('auth');
 Route::get('/aluno/remover/{id}', 'AlunoController@remove')->name('/aluno/remover')->middleware('auth');
+Route::get('/aluno/mostrar/{id}', 'AlunoController@show')->name('/aluno/mostrar')->middleware('auth');
 
 //rotas de gestor
 Route::post('/gestor/gravar', 'GestorController@store')->name('/gestor/gravar')->middleware('auth');
