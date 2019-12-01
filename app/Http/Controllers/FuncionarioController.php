@@ -108,7 +108,7 @@ class Funcionariocontroller extends Controller
   public function listar()
   {
       //$gestores = Pessoa::all();
-      $usuarios= \App\User::orderBy('id')->get();
+      $usuarios= \App\Funcionario::orderBy('id')->get();
       //$funcionarios = \App\Funcionario::orderBy('id')->get();
       return view('FuncionarioView/ListarFuncionario', ['usuarios' => $usuarios]);
   }

@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">    
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/menu.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -34,39 +34,41 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <div class="dropdown">
-                            <button class="dropbtn">Funcionário</button>
-                            <div class="dropdown-content">
-                                <a class="dropdown-item" href="{{route('/funcionario/cadastrar')}}">
-                                    Novo Funcionário
-                                </a>
-                                <a class="dropdown-item" href="{{route('/funcionario/listar')}}">
-                                    Listar Funcionário
-                                </a>
+                        @if (Auth::guard()->check())
+                            <div class="dropdown">
+                                <button class="dropbtn">Funcionário</button>
+                                <div class="dropdown-content">
+                                    <a class="dropdown-item" href="{{route('/funcionario/cadastrar')}}">
+                                        Novo Funcionário
+                                    </a>
+                                    <a class="dropdown-item" href="{{route('/funcionario/listar')}}">
+                                        Listar Funcionário
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="dropdown">
-                            <button class="dropbtn">Aluno</button>
-                            <div class="dropdown-content">
-                                <a class="dropdown-item" href="{{route('/aluno/cadastrar')}}">
-                                    Novo Aluno
-                                </a>
-                                <a class="dropdown-item" href="{{route('/aluno/listar')}}">
-                                    Listar Aluno
-                                </a>
+                            <div class="dropdown">
+                                <button class="dropbtn">Aluno</button>
+                                <div class="dropdown-content">
+                                    <a class="dropdown-item" href="{{route('/aluno/cadastrar')}}">
+                                        Novo Aluno
+                                    </a>
+                                    <a class="dropdown-item" href="{{route('/aluno/listar')}}">
+                                        Listar Aluno
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="dropdown">
-                            <button class="dropbtn">Gestor</button>
-                            <div class="dropdown-content">
-                                <a class="dropdown-item" href="{{route('/gestor/cadastrar')}}">
-                                    Novo Gestor
-                                </a>
-                                <a class="dropdown-item" href="{{route('/gestor/listar')}}">
-                                    Listar Gestor
-                                </a>
+                            <div class="dropdown">
+                                <button class="dropbtn">Gestor</button>
+                                <div class="dropdown-content">
+                                    <a class="dropdown-item" href="{{route('/gestor/cadastrar')}}">
+                                        Novo Gestor
+                                    </a>
+                                    <a class="dropdown-item" href="{{route('/gestor/listar')}}">
+                                        Listar Gestor
+                                    </a>
+                                </div>
                             </div>
-                        </div>
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
