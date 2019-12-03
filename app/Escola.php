@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Escola extends Model
 {
     protected $fillable = [
-        'nome', 'endereco', 'telefone'
+        'nome',
+        'endereco',
+        'telefone'
     ];
 
     public static $rules = [

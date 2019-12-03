@@ -33,14 +33,6 @@ class EscolaController extends Controller
   public function store(Request $request)
   {
       $escola = new Escola();
-      $user = new User();
-
-      $request->validate(User::$rules, User::$messages);
-      $user->name = $request->nome;
-      $user->email = $request->email;
-      $user->password = password_hash($request->cpf, PASSWORD_DEFAULT);
-      $user->save();
-
       $request->validate(Escola::$rules, Escola::$messages);
       $escola->nome = $request->nome;
       $escola->descricao = $request->descricao;
@@ -48,10 +40,9 @@ class EscolaController extends Controller
       $escola->telefone = $request->telefone;
       $escola->modalidade = $request->modalidade;
       $escola->inep = $request->inep;
-      $escola->usuario_id = $user->id;
       $escola->save();
 
-      return redirect('escola/listar');
+      return redirect('/escola/listar');
   }
 
   /**
@@ -63,7 +54,7 @@ class EscolaController extends Controller
   public function show(Request $id)
   {
       $escola = \App\Escola::find($id);
-      $escola = \App\Escola::where($escola->id)->first();
+      //$escola = \App\Escola::where($escola->id)->first();
       return view("/show/MostrarEscola", ["escola" => $escola]);
   }
 
@@ -71,7 +62,7 @@ class EscolaController extends Controller
   {
       //$escolas = Escola::all();
      $escolas = \App\Escola::orderBy('id')->get();
-      return view('show/ListarEscola', ['escolas' => $escolas]);
+      return view('/show/ListarEscola', ['escolas' => $escolas]);
   }
 
   /**

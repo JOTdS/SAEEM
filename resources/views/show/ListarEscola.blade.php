@@ -14,7 +14,7 @@
                   @endif
 
                   <div class="panel-body">
-                      @if(count($escolas) == 0 and count($escolas) == 0)
+                      @if(count($escolas) == 0)
                       <div class="alert alert-danger">
                               Não há escolas cadastradas no sistema.
                       </div>
