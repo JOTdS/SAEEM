@@ -44,10 +44,11 @@
                                     <td data-title="telefone">{{ $escola->telefone }}</td>
                                     <td data-title="modalidade">{{ $escola->modalidade }}</td>
                                     <td data-title="inep">{{ $escola->inep }}</td>
-                                    <td>
-                            					<a href="/escola/editar/{{$escola->id}}">Editar</a> -
-                            					<a href="/escola/mostrar/{{$escola->id}}" class="btn btn-info">Visualizar</a>
-                            				</td>
+                                    <td data-title="Acoes">
+                                        <a href="/escola/mostrar/{{$escola->id}}" class="btn btn-info">Visualizar</a> -
+                                        <a href="/escola/editar/{{$escola->id}}" class="btn btn-info">Editar</a> -
+                            			<a href="/escola/remover/{{$escola->id}}" class="btn btn-danger">Remover</a>
+                            		</td>
                                 </tr>
                               @endforeach
 
@@ -56,7 +57,7 @@
 
                         </div>
                       @endif
-                      <a href="/escola/cadastrar"> Adicionar uma Escola</a>
+                      <a href="/escola/cadastrar"> Adicionar uma nova Escola</a>
                   </div>
 
                 </div>
