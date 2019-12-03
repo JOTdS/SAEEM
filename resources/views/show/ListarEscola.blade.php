@@ -46,7 +46,7 @@
                                     <td data-title="inep">{{ $escola->inep }}</td>
                                     <td>
                             					<a href="/escola/editar/{{$escola->id}}">Editar</a> -
-                            					<a href="/escola/remover/{{$escola->id}}">Remover</a>
+                            					<a href="/escola/mostrar/{{$escola->id}}" class="btn btn-info">Visualizar</a>
                             				</td>
                                 </tr>
                               @endforeach

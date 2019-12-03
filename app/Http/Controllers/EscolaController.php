@@ -34,27 +34,24 @@ class EscolaController extends Controller
   {
       $escola = new Escola();
       $user = new User();
-      $request->validate(Escola::$rules, Escola::$messages);
+
       $request->validate(User::$rules, User::$messages);
       $user->name = $request->nome;
       $user->email = $request->email;
       $user->password = password_hash($request->cpf, PASSWORD_DEFAULT);
+      $user->save();
+
+      $request->validate(Escola::$rules, Escola::$messages);
       $escola->nome = $request->nome;
       $escola->descricao = $request->descricao;
       $escola->endereco = $request->endereco;
       $escola->telefone = $request->telefone;
-      $user->save();
       $escola->modalidade = $request->modalidade;
       $escola->inep = $request->inep;
+      $escola->usuario_id = $user->id;
       $escola->save();
-      return redirect('escola/listar');
-  }
 
-  public function listar()
-  {
-      //$escolas = Escola::all();
-     $escolas = \App\Escola::orderBy('id')->get();
-      return view('show/ListarEscola', ['escolas' => $escolas]);
+      return redirect('escola/listar');
   }
 
   /**
@@ -63,9 +60,17 @@ class EscolaController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function show(Request $request)
+  public function show(Request $id)
   {
-      $escolas = Escola::all();
+      $escola = \App\Escola::find($id);
+      $escola = \App\Escola::where($escola->id)->first();
+      return view("/show/MostrarEscola", ["escola" => $escola]);
+  }
+
+  public function listar()
+  {
+      //$escolas = Escola::all();
+     $escolas = \App\Escola::orderBy('id')->get();
       return view('show/ListarEscola', ['escolas' => $escolas]);
   }
 
