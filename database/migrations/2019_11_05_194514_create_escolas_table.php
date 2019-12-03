@@ -15,10 +15,10 @@ class CreateEscolasTable extends Migration
     {
         Schema::create('escolas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('nome');
-            $table->text('descricao');
-            $table->text('endereco');
-            $table->text('telefone');
+            $table->text('nome', 200);
+            $table->text('descricao', 190)->nullable();
+            $table->text('endereco', 200)->nullable;
+            $table->text('telefone')->unique();
             $table->text('modalidade');
             //$table->bigInteger('gestor_id'); //Add Key
             $table->integer('inep');

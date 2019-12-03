@@ -40,3 +40,9 @@ Route::get('/funcionario/listar', 'FuncionarioController@listar')->name('/funcio
 Route::get('/funcionario/editar/{id}', 'FuncionarioController@viewInfo')->name('/funcionario/viewInfo')->middleware('auth');
 Route::post('/funcionario/atualizar','FuncionarioController@editar')->name('/funcionario/atualizar')->middleware('auth');
 Route::get('/funcionario/remover/{id}', 'FuncionarioController@remover')->name('/funcionario/remover')->middleware('auth');
+
+//rotas de escola
+Route::post('/escola/gravar', 'EscolaController@store')->name('/escola/gravar')->middleware('auth');
+Route::get('/escola/cadastrar', 'EscolaController@create')->name('/escola/cadastrar')->middleware('auth');
+Route::get('/escola/listar', 'EscolaController@listar')->name('/escola/listar')->middleware('auth');
+Route::get('/escola/mostrar/{id}', 'EscolaController@show')->name('/escola/mostrar')->middleware('auth');
