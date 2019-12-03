@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Cadastrar Aluno') }}</div>
+                <div class="card-header">{{ __('Cadastrar Funcionário') }}</div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('/funcionario/gravar') }}">
                       {{ csrf_field() }}
@@ -38,7 +38,7 @@
                         <div class="form-group row">
                             <label for="telefone" class="col-md-4 col-form-label text-md-right">{{ __('Telefone ') }}</label>
                             <div class="col-md-6">
-                              <input name="telefone" id="telefone" type="text" class="form-control" > {{ $errors->first('telefone')}} <!--require deste campo foi removido para testes-->
+                              <input name="telefone" id="telefone" type="text" class="form-control" required value= {{ old('cpf')}}> {{ $errors->first('telefone')}} <!--require deste campo foi removido para testes-->
                             </div>
                         </div>
                         <div class="form-group row">

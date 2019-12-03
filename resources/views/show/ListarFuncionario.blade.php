@@ -13,11 +13,11 @@
                       </div>
                   @endif
                   <div class="panel-body">
-                      @if(count($usuarios) == 0)
-                        <div class="alert alert-danger">
-                                Não há Usuários cadastrados no sistema.
-                        </div>
-                        @else
+                      @if(count($pessoas) == 0)
+                          <div class="alert alert-danger">
+                                  Não há funcionários cadastrados no sistema.
+                          </div>
+                      @else
                         <br>
                           <div id="tabela" class="table-responsive">
                             <h1> Lista de Funcionários </h1><br>
@@ -25,19 +25,23 @@
                               <thead>
                                 <tr>
                                     <th>Nº</th>
-                                    <th>Nome</th>
-                                    <th>email</th>
+                                    <th>NOME</th>
+                                    <th>CPF</th>
+                                    <th>TELEFONE</th>
+                                    <th>ENDEREÇO</th>
                                 </tr>
                               </thead>
                               <tbody>
-                                @foreach ($usuarios as $usuario)
+                                @foreach ($pessoas as $pessoa)
                                   <tr>
-                                      <td data-title="Nº">{{ $usuario->id }}</td>
-                                      <td data-title="Nome">{{ $usuario->name }}</td>
-                                      <td data-title="cpf">{{ $usuario->email }}</td>
+                                      <td data-title="Nº">{{ $pessoa->id }}</td>
+                                      <td data-title="Nome">{{ $pessoa->nome }}</td>
+                                      <td data-title="cpf">{{ $pessoa->cpf }}</td>
+                                      <td data-title="telefone">{{ $pessoa->telefone }}</td>
+                                      <td data-title="endereco">{{ $pessoa->endereco }}</td>
                                       <td>
-                              					<a href="/funcionario/editar/{{$usuario->id}}" class="btn btn-info">Editar</a>
-                              					<a href="/funcionario/remover/{{$usuario->id}}" class="btn btn-danger">Remover</a>
+                              					<a href="/funcionario/editar/{{$pessoa->usuario_id}}" class="btn btn-info">Editar</a>
+                              					<a href="/funcionario/remover/{{$pessoa->usuario_id}}" class="btn btn-danger">Remover</a>
                               				</td>
                                   </tr>
                                 @endforeach
