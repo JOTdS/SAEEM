@@ -52,10 +52,10 @@ class Funcionariocontroller extends Controller
       $pessoa->nome = $request->nome;
       $pessoa->cpf = $request->cpf;
       $pessoa->telefone = $request->telefone;
-      $user->save();    //salva o usuario apos validar cpf e telefone
       $pessoa->endereco = $request->endereco;
       $pessoa->sexo = $request->sexo;
       $pessoa->descricao = $request->descricao;
+      $user->save();    //salva o usuario apos validar os dados
       $pessoa->usuario_id = $user->id;
       $pessoa->is_funcionario = true;
 
@@ -124,7 +124,7 @@ class Funcionariocontroller extends Controller
 
 
 
-  public function editar(Request $request)
+  public function update(Request $request)
   {
       //atualizar usuario
       $user = User::find($request->id);
@@ -184,9 +184,29 @@ class Funcionariocontroller extends Controller
    */
 
 
+   public function show(Request $request)
+   {
+           $user = User::find($request->id);
+           $pessoa = Pessoa::where('usuario_id', '=',  $user->id)->first();
+           $funcionario = Funcionario::where('pessoa_id', '=',  $pessoa->id)->first();
+           if ($funcionario->is_gestor == true) {
+               //$gestor = Gestor::find($funcionario->id);
+               $gestor = \App\Gestor::where('funcionario_id', '=', $funcionario->id)->first();
+               return view('/show/MostrarFuncionario',['user' => $user, 'pessoa' => $pessoa, 'funcionario' => $funcionario, 'gestor' => $gestor, ]);
+           }else if ($funcionario->is_tecnico == true) {
+               //$tecnico = Tecnico::find($funcionario->id);
+               $tecnico = \App\Tecnico::where('funcionario_id', '=', $funcionario->id)->first();
+               return view('/show/MostrarFuncionario',['user' => $user, 'pessoa' => $pessoa, 'funcionario' => $funcionario, 'tecnico' => $tecnico]);
+           }else {
+             //$professor = Professor::find($funcionario->id);
+             $professor = \App\Professor::where('funcionario_id', '=', $funcionario->id)->first();
+             return view('/show/MostrarFuncionario',['user' => $user, 'pessoa' => $pessoa, 'funcionario' => $funcionario, 'professor' => $professor]);
+           }
+   }
 
 
-  public function viewInfo(Request $request)
+
+  public function edit(Request $request)
   {
           $user = User::find($request->id);
           $pessoa = Pessoa::where('usuario_id', '=',  $user->id)->first();
