@@ -60,17 +60,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="dropdown">
-                                <button class="dropbtn">Gestor</button>
-                                <div class="dropdown-content">
-                                    <a class="dropdown-item" href="{{route('/gestor/cadastrar')}}">
-                                        Novo Gestor
-                                    </a>
-                                    <a class="dropdown-item" href="{{route('/gestor/listar')}}">
-                                        Listar Gestor
-                                    </a>
-                                </div>
-                            </div>
+                            
                             <div class="dropdown">
                                 <button class="dropbtn">Escola</button>
                                 <div class="dropdown-content">
