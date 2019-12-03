@@ -39,3 +39,9 @@ Route::get('/funcionario/remover/{id}', 'FuncionarioController@remover')->name('
 Route::get('/funcionario/relatorios', 'FuncionarioController@gerarRelatorios')->name('/funcionario/relatorios')->middleware('auth');
 Route::post('/funcionario/relatorioCargo', 'FuncionarioController@gerarRelatorioCargo')->name('/funcionario/relatorioCargo')->middleware('auth');
 Route::post('/funcionario/relatorioNome', 'FuncionarioController@gerarRelatorioNome')->name('/funcionario/relatorioNome')->middleware('auth');
+
+//rotas de escola
+Route::post('/escola/gravar', 'EscolaController@store')->name('/escola/gravar')->middleware('auth');
+Route::get('/escola/cadastrar', 'EscolaController@create')->name('/escola/cadastrar')->middleware('auth');
+Route::get('/escola/listar', 'EscolaController@listar')->name('/escola/listar')->middleware('auth');
+Route::get('/escola/mostrar/{id}', 'EscolaController@show')->name('/escola/mostrar')->middleware('auth');
