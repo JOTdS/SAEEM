@@ -27,7 +27,7 @@ class Funcionariocontroller extends Controller
    */
   public function create()
   {
-      return view('FuncionarioView/CadastrarFuncionario');
+      return view('create/CadastrarFuncionario');
   }
   /**
    * Store a newly created resource in storage.
@@ -45,7 +45,6 @@ class Funcionariocontroller extends Controller
       $user->email = $request->email;
       //$user->password = password_hash($request->cpf, PASSWORD_DEFAULT);
       $user->password = $request->senha;
-      $user->save();
 
       //cria pessoa
       $pessoa = new Pessoa();
@@ -53,11 +52,14 @@ class Funcionariocontroller extends Controller
       $pessoa->nome = $request->nome;
       $pessoa->cpf = $request->cpf;
       $pessoa->telefone = $request->telefone;
+      $user->save();    //salva o usuario apos validar cpf e telefone
       $pessoa->endereco = $request->endereco;
       $pessoa->sexo = $request->sexo;
       $pessoa->descricao = $request->descricao;
       $pessoa->usuario_id = $user->id;
       $pessoa->is_funcionario = true;
+
+
       $pessoa->save();
 
       //cria funcionario
@@ -98,37 +100,30 @@ class Funcionariocontroller extends Controller
         $professor->save();
 
     }else{
-          $echo( "cargo não existe, selecione um cargo existente!");
+          $echo( "selecione um cargo existente!");
       }
 
       return redirect('funcionario/listar');
   }
 
 
+
+
   public function listar()
   {
-      //$gestores = Pessoa::all();
-      $usuarios= \App\Funcionario::orderBy('id')->get();
-      //$funcionarios = \App\Funcionario::orderBy('id')->get();
-      return view('FuncionarioView/ListarFuncionario', ['usuarios' => $usuarios]);
+      $pessoas = \App\Pessoa::where('is_funcionario', '=', 'true')->get();
+      return view('show/ListarFuncionario', ['pessoas' => $pessoas]);
   }
-  /**
-   * Display the specified resource.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function show(Request $request)
-  {
-      $gestores = Gestor::all();
-      return view('show/ListarGestor', ['gestores' => $gestores]);
-  }
+
   /**
    * Show the form for editing the specified resource.
    *
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
+
+
+
   public function editar(Request $request)
   {
       //atualizar usuario
@@ -139,7 +134,7 @@ class Funcionariocontroller extends Controller
       $user->update();
 
       //atualizar pessoa
-      $pessoa = Pessoa::find($user->id);
+      $pessoa = Pessoa::where('usuario_id', '=', $user->id)->first();
       $pessoa->nome = $request->get('nome');
       $pessoa->cpf = $request->get('cpf');
       $pessoa->telefone = $request->get('telefone');
@@ -151,7 +146,7 @@ class Funcionariocontroller extends Controller
       $pessoa->update();
 
       //atualizar funcionario
-      $funcionario = Funcionario::find($pessoa->id);
+      $funcionario = Funcionario::where('pessoa_id', '=', $pessoa->id)->first();
       $funcionario->pessoa_id = $pessoa->id;
       $funcionario->update();
 
@@ -187,23 +182,27 @@ class Funcionariocontroller extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
+
+
+
+
   public function viewInfo(Request $request)
   {
           $user = User::find($request->id);
-          $pessoa = Pessoa::find($user->id);
-          $funcionario = Funcionario::find($pessoa->id);
+          $pessoa = Pessoa::where('usuario_id', '=',  $user->id)->first();
+          $funcionario = Funcionario::where('pessoa_id', '=',  $pessoa->id)->first();
           if ($funcionario->is_gestor == true) {
               //$gestor = Gestor::find($funcionario->id);
               $gestor = \App\Gestor::where('funcionario_id', '=', $funcionario->id)->first();
-              return view('/FuncionarioView/editarFuncionario',['user' => $user, 'pessoa' => $pessoa, 'funcionario' => $funcionario, 'gestor' => $gestor]);
+              return view('/edit/editarFuncionario',['user' => $user, 'pessoa' => $pessoa, 'funcionario' => $funcionario, 'gestor' => $gestor]);
           }else if ($funcionario->is_tecnico == true) {
               //$tecnico = Tecnico::find($funcionario->id);
               $tecnico = \App\Tecnico::where('funcionario_id', '=', $funcionario->id)->first();
-              return view('/FuncionarioView/editarFuncionario',['user' => $user, 'pessoa' => $pessoa, 'funcionario' => $funcionario, 'tecnico' => $tecnico]);
+              return view('/edit/editarFuncionario',['user' => $user, 'pessoa' => $pessoa, 'funcionario' => $funcionario, 'tecnico' => $tecnico]);
           }else {
             //$professor = Professor::find($funcionario->id);
             $professor = \App\Professor::where('funcionario_id', '=', $funcionario->id)->first();
-            return view('/FuncionarioView/editarFuncionario',['user' => $user, 'pessoa' => $pessoa, 'funcionario' => $funcionario, 'professor' => $professor]);
+            return view('/edit/editarFuncionario',['user' => $user, 'pessoa' => $pessoa, 'funcionario' => $funcionario, 'professor' => $professor]);
           }
   }
   /**
@@ -212,11 +211,15 @@ class Funcionariocontroller extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
+
+
+
+
+
   public function remover(Request $request){
-      $id = $request->id;
-      $user = User::find($id);
-      $pessoa = Pessoa::find($user->id);
-      $funcionario = Funcionario::find($pessoa->id);
+      $user = User::find($request->id);
+      $pessoa = Pessoa::where('usuario_id', '=',  $user->id)->first();
+      $funcionario = Funcionario::where('pessoa_id', '=',  $pessoa->id)->first();
       if ($funcionario->is_gestor == true) {
           $gestor = \App\Gestor::where('funcionario_id', '=', $funcionario->id)->first();
           //$gestor = Gestor::find($funcionario->id);
@@ -243,4 +246,64 @@ class Funcionariocontroller extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
+
+
+
+   public function gerarRelatorios()
+   {
+       $pessoas = \App\Pessoa::where('is_funcionario', '=', 'true')->get();
+       return view('report/RelatorioFuncionario', ['pessoas' => $pessoas]);
+   }
+
+
+
+
+   public function gerarRelatorioCargo(Request $request){
+
+      if ($request->cargo == '0') {
+          $funcionarios = \App\Funcionario::where('is_gestor', '=', 'true')->get();
+      }else if ($request->cargo == '1') {
+          $funcionarios = \App\Funcionario::where('is_tecnico', '=', 'true')->get();
+      }else if ($request->cargo == '2') {
+          $funcionarios = \App\Funcionario::where('is_professor', '=', 'true')->get();
+      }else {
+        echo "cargo não existe!";
+      }
+
+      $pessoas = array();
+      foreach ($funcionarios as $funcionario) {
+          $pessoa = \App\Pessoa::where('id', '=', $funcionario->pessoa_id )->first();
+          array_push($pessoas, $pessoa);
+      }
+
+      return view('/report/RelatorioFuncionario', ['pessoas' => $pessoas]);
+   }
+   /**
+    * Display the specified resource.
+    *
+    * @param  int  $id
+    * @return \Illuminate\Http\Response
+    */
+
+
+
+
+    public function gerarRelatorioNome(Request $request){
+      $pessoasNome = Pessoa::where('nome', 'ilike', '%' . $request->nome . '%')->get();
+            $pessoas = array();
+            //$funcionarios = array();
+            foreach ($pessoasNome as $pessoaNome) {
+              $funcionario = \App\Funcionario::where('pessoa_id', '=', $pessoaNome->id )->first();
+              $pessoa = \App\Pessoa::find($funcionario->pessoa_id);
+              array_push($pessoas, $pessoa);
+            }
+
+       return view('/report/RelatorioFuncionario', ['pessoas' => $pessoas]);
+    }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
 }

@@ -27,10 +27,6 @@ Route::post('/aluno/update', 'AlunoController@update')->name('/aluno/update')->m
 Route::get('/aluno/remover/{id}', 'AlunoController@remove')->name('/aluno/remover')->middleware('auth');
 Route::get('/aluno/mostrar/{id}', 'AlunoController@show')->name('/aluno/mostrar')->middleware('auth');
 
-//rotas de gestor
-Route::post('/gestor/gravar', 'GestorController@store')->name('/gestor/gravar')->middleware('auth');
-Route::get('/gestor/cadastrar', 'GestorController@create')->name('/gestor/cadastrar')->middleware('auth');
-Route::get('/gestor/listar', 'GestorController@listar')->name('/gestor/listar')->middleware('auth');
 
 
 //rotas de funcionario
@@ -40,6 +36,9 @@ Route::get('/funcionario/listar', 'FuncionarioController@listar')->name('/funcio
 Route::get('/funcionario/editar/{id}', 'FuncionarioController@viewInfo')->name('/funcionario/viewInfo')->middleware('auth');
 Route::post('/funcionario/atualizar','FuncionarioController@editar')->name('/funcionario/atualizar')->middleware('auth');
 Route::get('/funcionario/remover/{id}', 'FuncionarioController@remover')->name('/funcionario/remover')->middleware('auth');
+Route::get('/funcionario/relatorios', 'FuncionarioController@gerarRelatorios')->name('/funcionario/relatorios')->middleware('auth');
+Route::post('/funcionario/relatorioCargo', 'FuncionarioController@gerarRelatorioCargo')->name('/funcionario/relatorioCargo')->middleware('auth');
+Route::post('/funcionario/relatorioNome', 'FuncionarioController@gerarRelatorioNome')->name('/funcionario/relatorioNome')->middleware('auth');
 
 //rotas de escola
 Route::post('/escola/gravar', 'EscolaController@store')->name('/escola/gravar')->middleware('auth');

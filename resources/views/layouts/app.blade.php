@@ -44,6 +44,9 @@
                                     <a class="dropdown-item" href="{{route('/funcionario/listar')}}">
                                         Listar Funcionário
                                     </a>
+                                    <a class="dropdown-item" href="{{route('/funcionario/relatorios')}}">
+                                        Relatório Funcionário
+                                    </a>
                                 </div>
                             </div>
                             <div class="dropdown">
