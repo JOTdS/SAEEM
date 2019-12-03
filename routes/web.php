@@ -33,8 +33,9 @@ Route::get('/aluno/mostrar/{id}', 'AlunoController@show')->name('/aluno/mostrar'
 Route::post('/funcionario/gravar', 'FuncionarioController@store')->name('/funcionario/gravar')->middleware('auth');
 Route::get('/funcionario/cadastrar', 'FuncionarioController@create')->name('/funcionario/cadastrar')->middleware('auth');
 Route::get('/funcionario/listar', 'FuncionarioController@listar')->name('/funcionario/listar')->middleware('auth');
-Route::get('/funcionario/editar/{id}', 'FuncionarioController@viewInfo')->name('/funcionario/viewInfo')->middleware('auth');
-Route::post('/funcionario/atualizar','FuncionarioController@editar')->name('/funcionario/atualizar')->middleware('auth');
+Route::get('/funcionario/editar/{id}', 'FuncionarioController@edit')->name('/funcionario/editar')->middleware('auth');
+Route::get('/funcionario/visualizar/{id}', 'FuncionarioController@show')->name('/funcionario/visualizar')->middleware('auth');
+Route::post('/funcionario/atualizar','FuncionarioController@update')->name('/funcionario/atualizar')->middleware('auth');
 Route::get('/funcionario/remover/{id}', 'FuncionarioController@remover')->name('/funcionario/remover')->middleware('auth');
 Route::get('/funcionario/relatorios', 'FuncionarioController@gerarRelatorios')->name('/funcionario/relatorios')->middleware('auth');
 Route::post('/funcionario/relatorioCargo', 'FuncionarioController@gerarRelatorioCargo')->name('/funcionario/relatorioCargo')->middleware('auth');
