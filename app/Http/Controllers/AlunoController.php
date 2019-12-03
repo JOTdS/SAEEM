@@ -76,7 +76,6 @@ class AlunoController extends Controller
      */
     public function show($id)
     {
-
         $pessoa = \App\Pessoa::find($id);
         $aluno = \App\Aluno::where('pessoa_id', '=', $pessoa->id)->first();
         return view("/show/MostrarAluno", ["pessoa" => $pessoa, "aluno" => $aluno]);

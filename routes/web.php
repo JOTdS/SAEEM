@@ -27,8 +27,6 @@ Route::post('/aluno/update', 'AlunoController@update')->name('/aluno/update')->m
 Route::get('/aluno/remover/{id}', 'AlunoController@remove')->name('/aluno/remover')->middleware('auth');
 Route::get('/aluno/mostrar/{id}', 'AlunoController@show')->name('/aluno/mostrar')->middleware('auth');
 
-
-
 //rotas de funcionario
 Route::post('/funcionario/gravar', 'FuncionarioController@store')->name('/funcionario/gravar')->middleware('auth');
 Route::get('/funcionario/cadastrar', 'FuncionarioController@create')->name('/funcionario/cadastrar')->middleware('auth');
@@ -47,3 +45,23 @@ Route::get('/escola/cadastrar', 'EscolaController@create')->name('/escola/cadast
 Route::get('/escola/listar', 'EscolaController@listar')->name('/escola/listar')->middleware('auth');
 Route::get('/escola/mostrar/{id}', 'EscolaController@show')->name('/escola/mostrar')->middleware('auth');
 Route::get('/escola/remover/{id}', 'EscolaController@remover')->name('/escola/remover')->middleware('auth');
+
+
+//rotas de Turmas
+Route::post('/turma/gravar', 'TurmaController@store')->name('/turma/gravar')->middleware('auth');
+Route::get('/turma/cadastrar', 'TurmaController@create')->name('/turma/cadastrar')->middleware('auth');
+Route::get('/turma/listar', 'TurmaController@listar')->name('/turma/listar')->middleware('auth');
+Route::get('/turma/editar/{id}', 'TurmaController@edit')->name('/turma/editar')->middleware('auth');
+Route::get('/turma/mostrar/{id}', 'TurmaController@show')->name('/turma/mostrar')->middleware('auth');
+Route::get('/turma/remover/{id}', 'TurmaController@remover')->name('/turma/remover')->middleware('auth');
+Route::post('/turma/update', 'TurmaController@update')->name('/turma/update')->middleware('auth');
+
+
+//rotas de Series
+Route::post('/serie/gravar', 'SerieController@store')->name('/serie/gravar')->middleware('auth');
+Route::get('/serie/cadastrar', 'SerieController@create')->name('/serie/cadastrar')->middleware('auth');
+Route::get('/serie/listar', 'SerieController@listar')->name('/serie/listar')->middleware('auth');
+Route::get('/serie/editar/{id}', 'SerieController@edit')->name('/serie/editar')->middleware('auth');
+Route::get('/serie/mostrar/{id}', 'SerieController@show')->name('/serie/mostrar')->middleware('auth');
+Route::get('/serie/remover/{id}', 'SerieController@remover')->name('/serie/remover')->middleware('auth');
+Route::post('/serie/update', 'SerieController@update')->name('/serie/update')->middleware('auth');

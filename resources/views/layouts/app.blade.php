@@ -42,10 +42,10 @@
                                         Novo Funcionário
                                     </a>
                                     <a class="dropdown-item" href="{{route('/funcionario/listar')}}">
-                                        Listar Funcionário
+                                        Listar Funcionários
                                     </a>
                                     <a class="dropdown-item" href="{{route('/funcionario/relatorios')}}">
-                                        Relatório Funcionário
+                                        Relatório Funcionários
                                     </a>
                                 </div>
                             </div>
@@ -56,11 +56,11 @@
                                         Novo Aluno
                                     </a>
                                     <a class="dropdown-item" href="{{route('/aluno/listar')}}">
-                                        Listar Aluno
+                                        Listar Alunos
                                     </a>
                                 </div>
                             </div>
-                            
+
                             <div class="dropdown">
                                 <button class="dropbtn">Escola</button>
                                 <div class="dropdown-content">
@@ -68,7 +68,19 @@
                                         Nova Escola
                                     </a>
                                     <a class="dropdown-item" href="{{route('/escola/listar')}}">
-                                        Listar Escola
+                                        Listar Escolas
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="dropdown">
+                                <button class="dropbtn">Turma</button>
+                                <div class="dropdown-content">
+                                    <a class="dropdown-item" href="{{route('/turma/cadastrar')}}">
+                                        Nova Turma
+                                    </a>
+                                    <a class="dropdown-item" href="{{route('/turma/listar')}}">
+                                        Listar Turmas
                                     </a>
                                 </div>
                             </div>
