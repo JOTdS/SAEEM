@@ -46,7 +46,7 @@ class AlunoController extends Controller
         $user->name = $request->nome;
         $user->email = $request->email;
         $user->password = password_hash($request->cpf, PASSWORD_DEFAULT);
-        $user->save();
+
 
         $request->validate(Pessoa::$rules, Pessoa::$messages);
         $pessoa->nome = $request->nome;
@@ -55,6 +55,7 @@ class AlunoController extends Controller
         $pessoa->endereco = $request->endereco;
         $pessoa->sexo = $request->sexo;
         $pessoa->descricao = $request->descricao;
+        $user->save();   //sempre deve salvar user depois dos campos obrigatorios ou campos que precisam de validação
         $pessoa->usuario_id = $user->id;
         $pessoa->save();
 
