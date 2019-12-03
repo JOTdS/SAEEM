@@ -51,16 +51,14 @@ class EscolaController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function show(Request $id)
+  public function show($id)
   {
       $escola = \App\Escola::find($id);
-      //$escola = \App\Escola::where($escola->id)->first();
       return view("/show/MostrarEscola", ["escola" => $escola]);
   }
 
   public function listar()
   {
-      //$escolas = Escola::all();
      $escolas = \App\Escola::orderBy('id')->get();
       return view('/show/ListarEscola', ['escolas' => $escolas]);
   }
@@ -86,15 +84,18 @@ class EscolaController extends Controller
   {
       //
   }
-  /**
+
+   /**
    * Remove the specified resource from storage.
    *
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function destroy($id)
-  {
-      //
+  public function remover($id){
+      $escola = \App\Escola::find($id);
+      $escola->delete();
+
+      return redirect("escola\listar");
   }
   /**
    * Display the specified resource.
