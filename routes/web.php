@@ -65,3 +65,12 @@ Route::get('/serie/editar/{id}', 'SerieController@edit')->name('/serie/editar')-
 Route::get('/serie/mostrar/{id}', 'SerieController@show')->name('/serie/mostrar')->middleware('auth');
 Route::get('/serie/remover/{id}', 'SerieController@remover')->name('/serie/remover')->middleware('auth');
 Route::post('/serie/update', 'SerieController@update')->name('/serie/update')->middleware('auth');
+
+//rotas de Turma_Serie
+Route::post('/turma_serie/gravar', 'Turma_SerieController@store')->name('/turma_serie/gravar')->middleware('auth');
+Route::get('/turma_serie/cadastrar', 'Turma_SerieController@create')->name('/turma_serie/cadastrar')->middleware('auth');
+Route::get('/turma_serie/listar', 'Turma_SerieController@listar')->name('/turma_serie/listar')->middleware('auth');
+Route::get('/turma_serie/editar/{id}', 'Turma_SerieController@edit')->name('/turma_serie/editar')->middleware('auth');
+Route::get('/turma_serie/mostrar/{id}', 'Turma_SerieController@show')->name('/turma_serie/mostrar')->middleware('auth');
+Route::get('/turma_serie/remover/{id}', 'Turma_SerieController@remover')->name('/turma_serie/remover')->middleware('auth');
+Route::post('/turma_serie/update', 'Turma_SerieController@update')->name('/turma_serie/update')->middleware('auth');

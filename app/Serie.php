@@ -8,12 +8,14 @@ class Serie extends Model
 {
     protected $fillable = [
         'modalidade',
-        'descricao'
+        'descricao',
+        'escola_id'
     ];
 
     public static $rules = [
         'descricao' => 'required|max:500|min:3|string',
-        'modalidade' => 'max:200'
+        'modalidade' => 'max:200',
+        'escola_id' => 'required'
     ];
 
     public static $messages = [

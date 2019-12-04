@@ -92,10 +92,22 @@
                                         Nova Série
                                     </a>
                                     <a class="dropdown-item" href="{{route('/serie/listar')}}">
-                                        Listar Série
+                                        Listar Séries
                                     </a>
                                 </div>
                             </div>
+
+                            <div class="dropdown">
+                                    <button class="dropbtn">Turma_Serie</button>
+                                    <div class="dropdown-content">
+                                        <a class="dropdown-item" href="{{route('/turma_serie/cadastrar')}}">
+                                            Nova turma_serie
+                                        </a>
+                                        <a class="dropdown-item" href="{{route('/turma_serie/listar')}}">
+                                            Listar turma_series
+                                        </a>
+                                    </div>
+                                </div>
                         @endif
                     </ul>
 
