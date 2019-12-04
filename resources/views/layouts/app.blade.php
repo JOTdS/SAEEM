@@ -98,7 +98,6 @@
                             </div>
 
                             <div class="dropdown">
-<<<<<<< HEAD
                                     <button class="dropbtn">Turma_Serie</button>
                                     <div class="dropdown-content">
                                         <a class="dropdown-item" href="{{route('/turma_serie/cadastrar')}}">
@@ -109,7 +108,6 @@
                                         </a>
                                     </div>
                                 </div>
-=======
                                 <button class="dropbtn">Disciplina</button>
                                 <div class="dropdown-content">
                                     <a class="dropdown-item" href="{{route('/disciplina/cadastrar')}}">
@@ -123,9 +121,6 @@
                                     </a>
                                 </div>
                             </div>
-
-
->>>>>>> origin/master
                         @endif
                     </ul>
 
