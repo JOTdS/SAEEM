@@ -47,6 +47,7 @@ Route::get('/escola/mostrar/{id}', 'EscolaController@show')->name('/escola/mostr
 Route::get('/escola/remover/{id}', 'EscolaController@remover')->name('/escola/remover')->middleware('auth');
 
 
+<<<<<<< HEAD
 //rotas de Turmas
 Route::post('/turma/gravar', 'TurmaController@store')->name('/turma/gravar')->middleware('auth');
 Route::get('/turma/cadastrar', 'TurmaController@create')->name('/turma/cadastrar')->middleware('auth');
@@ -74,3 +75,15 @@ Route::get('/turma_serie/editar/{id}', 'Turma_SerieController@edit')->name('/tur
 Route::get('/turma_serie/mostrar/{id}', 'Turma_SerieController@show')->name('/turma_serie/mostrar')->middleware('auth');
 Route::get('/turma_serie/remover/{id}', 'Turma_SerieController@remover')->name('/turma_serie/remover')->middleware('auth');
 Route::post('/turma_serie/update', 'Turma_SerieController@update')->name('/turma_serie/update')->middleware('auth');
+=======
+//rotas de disciplina
+Route::post('/disciplina/gravar', 'DisciplinaController@store')->name('/disciplina/gravar')->middleware('auth');
+Route::get('/disciplina/cadastrar', 'DisciplinaController@create')->name('/disciplina/cadastrar')->middleware('auth');
+Route::get('/disciplina/listar', 'DisciplinaController@listar')->name('/disciplina/listar')->middleware('auth');
+Route::get('/disciplina/editar/{id}', 'DisciplinaController@edit')->name('/disciplina/editar')->middleware('auth');
+Route::get('/disciplina/visualizar/{id}', 'DisciplinaController@show')->name('/disciplina/visualizar')->middleware('auth');
+Route::post('/disciplina/atualizar','DisciplinaController@update')->name('/disciplina/atualizar')->middleware('auth');
+Route::get('/disciplina/remover/{id}', 'DisciplinaController@remover')->name('/disciplina/remover')->middleware('auth');
+Route::get('/disciplina/relatorios', 'DisciplinaController@gerarRelatorios')->name('/disciplina/relatorios')->middleware('auth');
+Route::post('/disciplina/relatorioNome', 'DisciplinaController@gerarRelatorioNome')->name('/disciplina/relatorioNome')->middleware('auth');
+>>>>>>> origin/master
