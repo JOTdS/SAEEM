@@ -214,15 +214,15 @@ class Funcionariocontroller extends Controller
           if ($funcionario->is_gestor == true) {
               //$gestor = Gestor::find($funcionario->id);
               $gestor = \App\Gestor::where('funcionario_id', '=', $funcionario->id)->first();
-              return view('/edit/editarFuncionario',['user' => $user, 'pessoa' => $pessoa, 'funcionario' => $funcionario, 'gestor' => $gestor]);
+              return view('/edit/EditarFuncionario',['user' => $user, 'pessoa' => $pessoa, 'funcionario' => $funcionario, 'gestor' => $gestor]);
           }else if ($funcionario->is_tecnico == true) {
               //$tecnico = Tecnico::find($funcionario->id);
               $tecnico = \App\Tecnico::where('funcionario_id', '=', $funcionario->id)->first();
-              return view('/edit/editarFuncionario',['user' => $user, 'pessoa' => $pessoa, 'funcionario' => $funcionario, 'tecnico' => $tecnico]);
+              return view('/edit/EditarFuncionario',['user' => $user, 'pessoa' => $pessoa, 'funcionario' => $funcionario, 'tecnico' => $tecnico]);
           }else {
             //$professor = Professor::find($funcionario->id);
             $professor = \App\Professor::where('funcionario_id', '=', $funcionario->id)->first();
-            return view('/edit/editarFuncionario',['user' => $user, 'pessoa' => $pessoa, 'funcionario' => $funcionario, 'professor' => $professor]);
+            return view('/edit/EditarFuncionario',['user' => $user, 'pessoa' => $pessoa, 'funcionario' => $funcionario, 'professor' => $professor]);
           }
   }
   /**

@@ -53,10 +53,10 @@
                                 </tbody>
                             </table>
                         <a href="/funcionario/listar/" class="btn btn-primary">Voltar</a>
-                        <a href="/funcionario/editar/{{$pessoa->usuario_id}}" class="btn btn-info" style="text-align:right;">Editar</a>
+                        <a href="/funcionario/editar/{{$pessoa->usuario_id}}" class="btn btn-info" >Editar</a>
                         <!-- <a href="/funcionario/remover/{{$pessoa->usuario_id}}" class="btn btn-danger" style="text-align:right;">Remover</a> -->
 
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ExemploModalCentralizado" style="text-align:right;">
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ExemploModalCentralizado" >
                           Remover
                         </button>
                         <!-- Modal remover -->

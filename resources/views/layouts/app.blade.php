@@ -60,7 +60,7 @@
                                     </a>
                                 </div>
                             </div>
-                            
+
                             <div class="dropdown">
                                 <button class="dropbtn">Escola</button>
                                 <div class="dropdown-content">
@@ -72,6 +72,23 @@
                                     </a>
                                 </div>
                             </div>
+
+                            <div class="dropdown">
+                                <button class="dropbtn">Disciplina</button>
+                                <div class="dropdown-content">
+                                    <a class="dropdown-item" href="{{route('/disciplina/cadastrar')}}">
+                                        Nova Disciplina
+                                    </a>
+                                    <a class="dropdown-item" href="{{route('/disciplina/listar')}}">
+                                        Listar Disciplinas
+                                    </a>
+                                    <a class="dropdown-item" href="{{route('/disciplina/relatorios')}}">
+                                        Relatório Disciplinas
+                                    </a>
+                                </div>
+                            </div>
+
+
                         @endif
                     </ul>
 
