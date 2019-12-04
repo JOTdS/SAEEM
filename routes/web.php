@@ -27,8 +27,6 @@ Route::post('/aluno/update', 'AlunoController@update')->name('/aluno/update')->m
 Route::get('/aluno/remover/{id}', 'AlunoController@remove')->name('/aluno/remover')->middleware('auth');
 Route::get('/aluno/mostrar/{id}', 'AlunoController@show')->name('/aluno/mostrar')->middleware('auth');
 
-
-
 //rotas de funcionario
 Route::post('/funcionario/gravar', 'FuncionarioController@store')->name('/funcionario/gravar')->middleware('auth');
 Route::get('/funcionario/cadastrar', 'FuncionarioController@create')->name('/funcionario/cadastrar')->middleware('auth');
@@ -48,6 +46,32 @@ Route::get('/escola/listar', 'EscolaController@listar')->name('/escola/listar')-
 Route::get('/escola/mostrar/{id}', 'EscolaController@show')->name('/escola/mostrar')->middleware('auth');
 Route::get('/escola/remover/{id}', 'EscolaController@remover')->name('/escola/remover')->middleware('auth');
 
+//rotas de Turmas
+Route::post('/turma/gravar', 'TurmaController@store')->name('/turma/gravar')->middleware('auth');
+Route::get('/turma/cadastrar', 'TurmaController@create')->name('/turma/cadastrar')->middleware('auth');
+Route::get('/turma/listar', 'TurmaController@listar')->name('/turma/listar')->middleware('auth');
+Route::get('/turma/editar/{id}', 'TurmaController@edit')->name('/turma/editar')->middleware('auth');
+Route::get('/turma/mostrar/{id}', 'TurmaController@show')->name('/turma/mostrar')->middleware('auth');
+Route::get('/turma/remover/{id}', 'TurmaController@remover')->name('/turma/remover')->middleware('auth');
+Route::post('/turma/update', 'TurmaController@update')->name('/turma/update')->middleware('auth');
+
+//rotas de Series
+Route::post('/serie/gravar', 'SerieController@store')->name('/serie/gravar')->middleware('auth');
+Route::get('/serie/cadastrar', 'SerieController@create')->name('/serie/cadastrar')->middleware('auth');
+Route::get('/serie/listar', 'SerieController@listar')->name('/serie/listar')->middleware('auth');
+Route::get('/serie/editar/{id}', 'SerieController@edit')->name('/serie/editar')->middleware('auth');
+Route::get('/serie/mostrar/{id}', 'SerieController@show')->name('/serie/mostrar')->middleware('auth');
+Route::get('/serie/remover/{id}', 'SerieController@remover')->name('/serie/remover')->middleware('auth');
+Route::post('/serie/update', 'SerieController@update')->name('/serie/update')->middleware('auth');
+
+//rotas de Turma_Serie
+Route::post('/turma_serie/gravar', 'Turma_SerieController@store')->name('/turma_serie/gravar')->middleware('auth');
+Route::get('/turma_serie/cadastrar', 'Turma_SerieController@create')->name('/turma_serie/cadastrar')->middleware('auth');
+Route::get('/turma_serie/listar', 'Turma_SerieController@listar')->name('/turma_serie/listar')->middleware('auth');
+Route::get('/turma_serie/editar/{id}', 'Turma_SerieController@edit')->name('/turma_serie/editar')->middleware('auth');
+Route::get('/turma_serie/mostrar/{id}', 'Turma_SerieController@show')->name('/turma_serie/mostrar')->middleware('auth');
+Route::get('/turma_serie/remover/{id}', 'Turma_SerieController@remover')->name('/turma_serie/remover')->middleware('auth');
+Route::post('/turma_serie/update', 'Turma_SerieController@update')->name('/turma_serie/update')->middleware('auth');
 
 //rotas de disciplina
 Route::post('/disciplina/gravar', 'DisciplinaController@store')->name('/disciplina/gravar')->middleware('auth');
@@ -59,3 +83,4 @@ Route::post('/disciplina/atualizar','DisciplinaController@update')->name('/disci
 Route::get('/disciplina/remover/{id}', 'DisciplinaController@remover')->name('/disciplina/remover')->middleware('auth');
 Route::get('/disciplina/relatorios', 'DisciplinaController@gerarRelatorios')->name('/disciplina/relatorios')->middleware('auth');
 Route::post('/disciplina/relatorioNome', 'DisciplinaController@gerarRelatorioNome')->name('/disciplina/relatorioNome')->middleware('auth');
+

@@ -42,10 +42,10 @@
                                         Novo Funcionário
                                     </a>
                                     <a class="dropdown-item" href="{{route('/funcionario/listar')}}">
-                                        Listar Funcionário
+                                        Listar Funcionários
                                     </a>
                                     <a class="dropdown-item" href="{{route('/funcionario/relatorios')}}">
-                                        Relatório Funcionário
+                                        Relatório Funcionários
                                     </a>
                                 </div>
                             </div>
@@ -56,7 +56,7 @@
                                         Novo Aluno
                                     </a>
                                     <a class="dropdown-item" href="{{route('/aluno/listar')}}">
-                                        Listar Aluno
+                                        Listar Alunos
                                     </a>
                                 </div>
                             </div>
@@ -68,12 +68,46 @@
                                         Nova Escola
                                     </a>
                                     <a class="dropdown-item" href="{{route('/escola/listar')}}">
-                                        Listar Escola
+                                        Listar Escolas
                                     </a>
                                 </div>
                             </div>
 
                             <div class="dropdown">
+                                <button class="dropbtn">Turma</button>
+                                <div class="dropdown-content">
+                                    <a class="dropdown-item" href="{{route('/turma/cadastrar')}}">
+                                        Nova Turma
+                                    </a>
+                                    <a class="dropdown-item" href="{{route('/turma/listar')}}">
+                                        Listar Turmas
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="dropdown">
+                                <button class="dropbtn">Série</button>
+                                <div class="dropdown-content">
+                                    <a class="dropdown-item" href="{{route('/serie/cadastrar')}}">
+                                        Nova Série
+                                    </a>
+                                    <a class="dropdown-item" href="{{route('/serie/listar')}}">
+                                        Listar Séries
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="dropdown">
+                                    <button class="dropbtn">Turma_Serie</button>
+                                    <div class="dropdown-content">
+                                        <a class="dropdown-item" href="{{route('/turma_serie/cadastrar')}}">
+                                            Nova turma_serie
+                                        </a>
+                                        <a class="dropdown-item" href="{{route('/turma_serie/listar')}}">
+                                            Listar turma_series
+                                        </a>
+                                    </div>
+                                </div>
                                 <button class="dropbtn">Disciplina</button>
                                 <div class="dropdown-content">
                                     <a class="dropdown-item" href="{{route('/disciplina/cadastrar')}}">
@@ -87,8 +121,6 @@
                                     </a>
                                 </div>
                             </div>
-
-
                         @endif
                     </ul>
 
