@@ -84,6 +84,18 @@
                                     </a>
                                 </div>
                             </div>
+
+                            <div class="dropdown">
+                                <button class="dropbtn">Série</button>
+                                <div class="dropdown-content">
+                                    <a class="dropdown-item" href="{{route('/serie/cadastrar')}}">
+                                        Nova Série
+                                    </a>
+                                    <a class="dropdown-item" href="{{route('/serie/listar')}}">
+                                        Listar Série
+                                    </a>
+                                </div>
+                            </div>
                         @endif
                     </ul>
 

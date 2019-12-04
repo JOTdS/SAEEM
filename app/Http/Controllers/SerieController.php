@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\Serie;
+use \App\Escola;
 
 class SerieController extends Controller
 {
@@ -23,7 +25,8 @@ class SerieController extends Controller
      */
     public function create()
     {
-        //
+        $escolas = \App\Escola::all();
+        return view('create/CadastrarSerie', ["escolas" => $escolas]);
     }
 
     /**
@@ -34,7 +37,15 @@ class SerieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(Serie::$rules, Serie::$messages);
+        $serie = new Serie();
+
+        $serie->modalidade = $request->modalidade;
+        $serie->descricao = $request->descricao;
+        $serie->escola_id = $request->escola_id;
+        $serie->save();
+
+        return redirect()->route('/serie/listar');
     }
     /**
      * Display the specified resource.
@@ -47,7 +58,8 @@ class SerieController extends Controller
         //
     }
     public function listar(){
-        //
+        $series = \App\Serie::All();
+        return view("/show/ListarSeries", ["series" => $series]);
     }
 
     /**
@@ -58,7 +70,9 @@ class SerieController extends Controller
      */
     public function edit($id)
     {
-        //
+        $serie = \App\Serie::where('id', '=', $id)->first();
+        $escolas = \App\Escola::All();
+        return view("/edit/EditarSerie", ["serie" => $serie, 'escolas' => $escolas]);
     }
 
     /**
@@ -70,7 +84,15 @@ class SerieController extends Controller
      */
     public function update(Request $request)
     {
-        //
+        $request->validate(Serie::$rules, Serie::$messages);
+        $serie = \App\Serie::where('id', '=', $request->id)->first();
+
+        $serie->modalidade = $request->modalidade;
+        $serie->descricao = $request->descricao;
+        $serie->escola_id = $request->escola_id;
+        $serie->save();
+
+        return redirect()->route('/serie/listar');
     }
 
     /**

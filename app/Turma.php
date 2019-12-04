@@ -15,7 +15,7 @@ class Turma extends Model
     public static $rules = [
         'nome' => 'required|max:50|min:3|string',
         'modalidade' => 'max:200',
-        'nome' => 'required|max:500|min:3|string'
+        'descricao' => 'required|max:500|min:3|string'
     ];
 
     public static $messages = [
