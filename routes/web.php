@@ -47,3 +47,15 @@ Route::get('/escola/cadastrar', 'EscolaController@create')->name('/escola/cadast
 Route::get('/escola/listar', 'EscolaController@listar')->name('/escola/listar')->middleware('auth');
 Route::get('/escola/mostrar/{id}', 'EscolaController@show')->name('/escola/mostrar')->middleware('auth');
 Route::get('/escola/remover/{id}', 'EscolaController@remover')->name('/escola/remover')->middleware('auth');
+
+
+//rotas de disciplina
+Route::post('/disciplina/gravar', 'DisciplinaController@store')->name('/disciplina/gravar')->middleware('auth');
+Route::get('/disciplina/cadastrar', 'DisciplinaController@create')->name('/disciplina/cadastrar')->middleware('auth');
+Route::get('/disciplina/listar', 'DisciplinaController@listar')->name('/disciplina/listar')->middleware('auth');
+Route::get('/disciplina/editar/{id}', 'DisciplinaController@edit')->name('/disciplina/editar')->middleware('auth');
+Route::get('/disciplina/visualizar/{id}', 'DisciplinaController@show')->name('/disciplina/visualizar')->middleware('auth');
+Route::post('/disciplina/atualizar','DisciplinaController@update')->name('/disciplina/atualizar')->middleware('auth');
+Route::get('/disciplina/remover/{id}', 'DisciplinaController@remover')->name('/disciplina/remover')->middleware('auth');
+Route::get('/disciplina/relatorios', 'DisciplinaController@gerarRelatorios')->name('/disciplina/relatorios')->middleware('auth');
+Route::post('/disciplina/relatorioNome', 'DisciplinaController@gerarRelatorioNome')->name('/disciplina/relatorioNome')->middleware('auth');
