@@ -12,10 +12,16 @@
                           {!! \Session::get('success') !!}
                       </div>
                   @endif
+                  @if (\Session::has('alert-danger'))
+                  <br>
+                      <div class="alert alert-danger">
+                          {!! \Session::get('alert-danger') !!}
+                      </div>
+                  @endif
                   <div class="panel-body">
                       @if(count($turmas) == 0 and count($turmas) == 0)
                       <div class="alert alert-danger">
-                              Não há pessoa cadastrada no sistema.
+                              Não há turmas cadastrada no sistema.
                       </div>
                       @else
                       <br>
@@ -38,6 +44,27 @@
                                     <td data-title="Descricao">{{ $turma->descricao }}</td>
                                     <td data-title="Acoes">
                                         <a href="/turma/editar/{{$turma->id}}" class="btn btn-info">Editar</a>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ExemploModalCentralizado" >
+                                          Remover
+                                        </button>
+                                        <!-- Modal remover -->
+                                        <div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+                                          <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                              <div class="modal-header">
+                                                <h5 class="modal-title" id="TituloModalCentralizado">Tem certeza que deseja remover?</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                                  <span aria-hidden="true">&times;</span>
+                                                </button>
+                                              </div>
+                
+                                              <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal">NÃO</button>
+                                                <a href="/turma/remover/{{$turma->id}}" class="btn btn-danger">SIM</a>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>  
                                     </td>
                                 </tr>
                               @endforeach

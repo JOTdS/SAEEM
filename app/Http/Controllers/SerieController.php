@@ -103,6 +103,13 @@ class SerieController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $turma_serie = \App\Turma_Serie::onlyTrashed()->where('serie_id', $id)->get();
+        if(empty($turma_serie)){
+            $serie = \App\Turma::find($id);
+            $serie->delete();          
+        }else{
+            session()->flash('alert-danger', 'A serie é dependência de Turma_Serie.');
+        }
+        return redirect()->route('/serie/listar');
     }
 }

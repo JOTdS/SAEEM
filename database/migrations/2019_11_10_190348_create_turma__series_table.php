@@ -18,6 +18,7 @@ class CreateTurmaSeriesTable extends Migration
             $table->string('cargaHorario');
             $table->bigInteger('turma_id'); //Descomentando
             $table->bigInteger('serie_id'); //Descomentando
+            $table->softDeletes();
             $table->timestamps();
         });
     }

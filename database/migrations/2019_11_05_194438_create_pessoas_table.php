@@ -23,6 +23,7 @@ class CreatePessoasTable extends Migration
             $table->bigInteger('usuario_id')->nullable();
             $table->boolean('is_funcionario')->default(false);
             $table->boolean('is_aluno')->default(false);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
