@@ -101,6 +101,13 @@ class TurmaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $turma_serie = \App\Turma_Serie::onlyTrashed()->where('turma_id', $id)->get();
+        if(empty($turma_serie)){
+            $turma = \App\Turma::find($id);
+            $turma->delete();          
+        }else{
+            session()->flash('alert-danger', 'A turma é dependência de Turma_Serie.');
+        }
+        return redirect()->route('/turma/listar');
     }
 }

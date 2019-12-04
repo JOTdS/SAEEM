@@ -17,18 +17,12 @@
                     <form method="POST" action="{{ route('/aluno/update') }}">
                       {{ csrf_field() }}
                         @csrf
-                        <input type="hidden" name="id" value="{{$user->id}}">
+                        <input type="hidden" name="id" value="{{$pessoa->id}}">
 
                         <div class="form-group row">
                             <label for="nome" class="col-md-4 col-form-label text-md-right">{{ __('Nome ') }}</label>
                             <div class="col-md-6">
-                                <input name="nome" id="nome" type="text" class="form-control" value= {{ $user->name }}> {{ $errors->first('nome')}}
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-mail ') }}</label>
-                            <div class="col-md-6">
-                              <input name="email" id="email" type="email" class="form-control" value= {{ $user->email }}> {{ $errors->first('email')}}
+                                <input name="nome" id="nome" type="text" class="form-control" value= {{ $pessoa->name }}> {{ $errors->first('nome')}}
                             </div>
                         </div>
                         <div class="form-group row">

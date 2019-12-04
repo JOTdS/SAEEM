@@ -13,7 +13,7 @@
                       </div>
                   @endif
                   <div class="panel-body">
-                      @if(count($pessoas) == 0 and count($pessoas) == 0)
+                      @if(count($alunos) == 0 and count($alunos) == 0)
                       <div class="alert alert-danger">
                               Não há pessoa cadastrada no sistema.
                       </div>
@@ -31,7 +31,8 @@
                               </tr>
                             </thead>
                             <tbody>
-                              @foreach ($pessoas as $pessoa)
+                              @foreach ($alunos as $aluno)
+                                <?php $pessoa = \App\Pessoa::find($aluno->id)?>
                                 <tr>
                                     <td data-title="Nº">{{ $pessoa->id }}</td>
                                     <td data-title="Nome">{{ $pessoa->nome }}</td>
@@ -39,8 +40,29 @@
                                     <td data-title="telefone">{{ $pessoa->telefone }}</td>
                                     <td data-title="endereco">{{ $pessoa->endereco }}</td>
                                     <td data-title="Acoes">
-                                        <a href="/aluno/editar/{{$pessoa->usuario_id}}" class="btn btn-info">Editar</a>
+                                        <a href="/aluno/editar/{{$pessoa->id}}" class="btn btn-info">Editar</a>
                                         <a href="/aluno/mostrar/{{$pessoa->id}}" class="btn btn-info">Visualizar</a>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ExemploModalCentralizado" >
+                                          Remover
+                                        </button>
+                                        <!-- Modal remover -->
+                                        <div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+                                          <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                              <div class="modal-header">
+                                                <h5 class="modal-title" id="TituloModalCentralizado">Tem certeza que deseja remover?</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                                  <span aria-hidden="true">&times;</span>
+                                                </button>
+                                              </div>
+                
+                                              <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal">NÃO</button>
+                                                <a href="/aluno/remover/{{$aluno->id}}" class="btn btn-danger">SIM</a>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>                
                                     </td>
                                 </tr>
                               @endforeach

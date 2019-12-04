@@ -106,7 +106,9 @@ class Turma_SerieController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $turma_serie = \App\Turma_Serie::find($id);
+        $turma_serie->delete();
+        return redirect()->route('/turma_serie/listar');
     }
 
 }

@@ -19,8 +19,7 @@ class CreateTurmasTable extends Migration
             $table->string('nome')->unique();
             $table->string('modalidade')->nullable();
             $table->text('descricao')->nullable();
-            //$table->bigInteger('serie_id'); //Tem uma tabela para a relação
-            //$table->bigInteger('disciplina_id'); //Tem uma tabela para a relação
+            $table->softDeletes();
         });
     }
 

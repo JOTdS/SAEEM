@@ -18,6 +18,7 @@ class CreateSeriesTable extends Migration
             $table->text('modalidade')->nullable();
             $table->text('descricao')->nullable();
             $table->bigInteger('escola_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

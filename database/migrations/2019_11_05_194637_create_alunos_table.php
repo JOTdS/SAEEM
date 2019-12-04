@@ -18,6 +18,7 @@ class CreateAlunosTable extends Migration
             $table->date('nascimento');
             $table->string('filiacao', 200)->nullable();
             $table->bigInteger('pessoa_id')->nullable();
+            $table->softDeletes();
             $table->timestamps();
 
         });

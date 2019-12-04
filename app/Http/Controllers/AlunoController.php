@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Aluno;
 use App\Pessoa;
+use Illuminate\Support\Facades\DB;
 
 class AlunoController extends Controller
 {
@@ -40,13 +41,6 @@ class AlunoController extends Controller
     {
         $aluno = new Aluno();
         $pessoa = new Pessoa();
-        $user = new User();
-
-        $request->validate(User::$rules, User::$messages);
-        $user->name = $request->nome;
-        $user->email = $request->email;
-        $user->password = password_hash($request->cpf, PASSWORD_DEFAULT);
-
 
         $request->validate(Pessoa::$rules, Pessoa::$messages);
         $pessoa->nome = $request->nome;
@@ -55,8 +49,6 @@ class AlunoController extends Controller
         $pessoa->endereco = $request->endereco;
         $pessoa->sexo = $request->sexo;
         $pessoa->descricao = $request->descricao;
-        $user->save();   //sempre deve salvar user depois dos campos obrigatorios ou campos que precisam de validação
-        $pessoa->usuario_id = $user->id;
         $pessoa->save();
 
         $request->validate(Aluno::$rules, Aluno::$messages);
@@ -81,8 +73,8 @@ class AlunoController extends Controller
         return view("/show/MostrarAluno", ["pessoa" => $pessoa, "aluno" => $aluno]);
     }
     public function listar(){
-        $pessoas = \App\Pessoa::orderBy('id')->get();
-        return view("/show/ListarAlunos", ["pessoas" => $pessoas]);
+        $alunos = \App\Aluno::All();
+        return view("/show/ListarAlunos", ["alunos" => $alunos]);
     }
 
     /**
@@ -93,12 +85,11 @@ class AlunoController extends Controller
      */
     public function edit($id)
     {
-        $user = \App\User::find($id);
-        $pessoa = \App\Pessoa::where('usuario_id', '=', $user->id)->first();
+        $pessoa = \App\Pessoa::where('usuario_id', '=', $id)->first();
         $aluno = \App\Aluno::where('pessoa_id', '=', $pessoa->id)->first();
         //$pessoa = \App\Pessoa::find($user->id);
         //$aluno = \App\Aluno::find($pessoa->id);
-        return view("/edit/EditarAluno", ["user" => $user, "pessoa" => $pessoa, "aluno" => $aluno]);
+        return view("/edit/EditarAluno", ["pessoa" => $pessoa, "aluno" => $aluno]);
     }
 
     /**
@@ -110,9 +101,7 @@ class AlunoController extends Controller
      */
     public function update(Request $request)
     {
-
-        $user = \App\User::find($request->id);
-        $pessoa = \App\Pessoa::where('usuario_id', '=', $user->id)->first();
+        $pessoa = \App\Pessoa::where('usuario_id', '=', $request->id)->first();
         $aluno = \App\Aluno::where('pessoa_id', '=', $pessoa->id)->first();
 
         $rulesPessoas = [
@@ -130,10 +119,6 @@ class AlunoController extends Controller
 
         $request->validate(Aluno::$rules, Aluno::$messages);
         $request->validate($rulesPessoas, Pessoa::$messages);
-        $request->validate($rulesUser, User::$messages);
-        $user->name = $request->nome;
-        $user->email = $request->email;
-        $user->password = password_hash($request->cpf, PASSWORD_DEFAULT);
 
         $pessoa->nome = $request->nome;
         $pessoa->cpf = $request->cpf;
@@ -141,12 +126,10 @@ class AlunoController extends Controller
         $pessoa->endereco = $request->endereco;
         $pessoa->sexo = $request->sexo;
         $pessoa->descricao = $request->descricao;
+        $pessoa->save();
 
         $aluno->nascimento = $request->nascimento;
         $aluno->filiacao = $request->filiacao;
-
-        $user->save();
-        $pessoa->save();
         $aluno->save();
 
         return redirect()->route('/aluno/listar');
@@ -160,6 +143,12 @@ class AlunoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $aluno = \App\Aluno::find($id);
+        $pessoa = \App\Pessoa::find($aluno->pessoa_id);
+
+        $aluno->delete();
+        $pessoa->delete();
+
+        return redirect()->route('/aluno/listar');
     }
 }

@@ -12,7 +12,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Cadastrar Turma') }}</div>
+                <div class="card-header">{{ __('Cadastrar Turma_Serie') }}</div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('/turma_serie/gravar') }}">
                       {{ csrf_field() }}
