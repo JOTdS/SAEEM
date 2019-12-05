@@ -9,13 +9,15 @@
                 <div class="card-header">{{ __('Atualizar Escola') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{URL('escola/atualizar/')}}">
+                    <form method="POST" action="{{URL('/escola/atualizar')}}">
+
+                      <input type="hidden" name="id" value="{{$escola->id}}">
 
                         <div class="form-group row">
                             <label for="nome" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
 
                             <div class="col-md-6">
-                                  <input id="nome" type="text" class="form-control" name="nome" value="{{$escola->nome}}" placeholder="{{$escola->nome}}" required autofocus>
+                                  <input id="nome" type="nome" class="form-control" name="nome" value="{{$escola->nome}}" placeholder="{{$escola->nome}}" required autofocus>
 
                                   @if ($errors->has('nome'))
                                       <span class="help-block">

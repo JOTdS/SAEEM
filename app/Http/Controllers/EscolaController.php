@@ -69,10 +69,11 @@ class EscolaController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
+
   public function editar(Request $resquest)
   {
       //atualizar escola
-      $escola = Escola::find($id);
+      $escola = Escola::find($request->id);
       $escola->nome = $resquest->get('nome');
       $escola->descricao = $resquest->get('descricao');
       $escola->endereco = $resquest->get('endereco');
@@ -83,6 +84,15 @@ class EscolaController extends Controller
 
       return redirect("escola/listar");
   }
+
+  public function viewInfo(Request $request)
+  {
+        $escola = Escola::find($request->id);
+        return view('/edit/editarEscola',['escola' => $escola]);
+
+  }
+
+
 
    /**
    * Remove the specified resource from storage.

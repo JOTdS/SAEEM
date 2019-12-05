@@ -45,6 +45,7 @@ Route::get('/funcionario/remover/{id}', 'FuncionarioController@remover')->name('
 Route::post('/escola/gravar', 'EscolaController@store')->name('/escola/gravar')->middleware('auth');
 Route::get('/escola/cadastrar', 'EscolaController@create')->name('/escola/cadastrar')->middleware('auth');
 Route::get('/escola/listar', 'EscolaController@listar')->name('/escola/listar')->middleware('auth');
+Route::get('/escola/editar/{id}', 'EscolaController@viewInfo')->name('/escola/viewInfo')->middleware('auth');
 Route::get('/escola/mostrar/{id}', 'EscolaController@show')->name('/escola/mostrar')->middleware('auth');
 Route::post('/escola/atualizar','EscolaController@editar')->name('/escola/atualizar')->middleware('auth');
 Route::get('/escola/remover/{id}', 'EscolaController@remover')->name('/escola/remover')->middleware('auth');
