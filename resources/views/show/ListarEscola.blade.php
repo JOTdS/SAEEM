@@ -27,11 +27,11 @@
                               <tr>
                                   <th>Nº</th>
                                   <th>Nome</th>
-                                  <th>descrição</th>
-                                  <th>endereco</th>
-                                  <th>telefone</th>
-                                  <th>modalidade</th>
-                                  <th>inep</th>
+                                  <th>Descrição</th>
+                                  <th>Endereço</th>
+                                  <th>Telefone</th>
+                                  <th>Modalidade</th>
+                                  <th>Inep</th>
                               </tr>
                             </thead>
                             <tbody>

@@ -63,27 +63,36 @@ class EscolaController extends Controller
       return view('/show/ListarEscola', ['escolas' => $escolas]);
   }
 
-  /**
+ /**
    * Show the form for editing the specified resource.
    *
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function edit($id)
+
+  public function editar(Request $resquest)
   {
-      //
+      //atualizar escola
+      $escola = Escola::find($request->id);
+      $escola->nome = $resquest->get('nome');
+      $escola->descricao = $resquest->get('descricao');
+      $escola->endereco = $resquest->get('endereco');
+      $escola->telefone = $resquest->get('telefone');
+      $escola->modalidade = $resquest->get('modalidade');
+      $escola->inep = $resquest->get('inep');
+      $escola->update();
+
+      return redirect("escola/listar");
   }
-  /**
-   * Update the specified resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function update(Request $request, $id)
+
+  public function viewInfo(Request $request)
   {
-      //
+        $escola = Escola::find($request->id);
+        return view('/edit/editarEscola',['escola' => $escola]);
+
   }
+
+
 
    /**
    * Remove the specified resource from storage.
