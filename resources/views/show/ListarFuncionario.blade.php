@@ -40,7 +40,7 @@
                                       <td data-title="cpf">{{ $pessoa->cpf }}</td>
                                       <td data-title="telefone">{{ $pessoa->telefone }}</td>
                                       <td data-title="endereco">{{ $pessoa->endereco }}</td>
-                                      <td>
+                                      <td class="right">
                                         <a href="/funcionario/visualizar/{{$pessoa->usuario_id}}" class="btn btn-primary">Ver</a>
                               					<a href="/funcionario/editar/{{$pessoa->usuario_id}}" class="btn btn-info">Editar</a>
                               					<!-- <a href="/funcionario/remover/{{$pessoa->usuario_id}}" class="btn btn-danger">Remover</a> -->

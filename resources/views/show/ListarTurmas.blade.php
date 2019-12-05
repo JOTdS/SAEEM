@@ -42,7 +42,7 @@
                                     <td data-title="Nome">{{ $turma->nome }}</td>
                                     <td data-title="Modalidade">{{ $turma->modalidade }}</td>
                                     <td data-title="Descricao">{{ $turma->descricao }}</td>
-                                    <td data-title="Acoes">
+                                    <td class="right" data-title="Acoes">
                                         <a href="/turma/editar/{{$turma->id}}" class="btn btn-info">Editar</a>
                                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ExemploModalCentralizado" >
                                           Remover
