@@ -64,14 +64,14 @@
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                                                   <span aria-hidden="true">&times;</span>
                                                 </button>
-                                              </div>                
+                                              </div>
                                               <div class="modal-footer">
                                                 <button type="button" class="btn btn-primary" data-dismiss="modal">NÃO</button>
                                                 <a href="/turma_serie/remover/{{$turma_serie->id}}" class="btn btn-danger">SIM</a>
                                               </div>
                                             </div>
                                           </div>
-                                        </div>  
+                                        </div>
                                     </td>
                                 </tr>
                               @endforeach

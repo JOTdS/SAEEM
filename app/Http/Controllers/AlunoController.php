@@ -48,6 +48,7 @@ class AlunoController extends Controller
         $pessoa->telefone = $request->telefone;
         $pessoa->endereco = $request->endereco;
         $pessoa->sexo = $request->sexo;
+        $pessoa->is_aluno = true;
         $pessoa->descricao = $request->descricao;
         $pessoa->save();
 
@@ -143,12 +144,36 @@ class AlunoController extends Controller
      */
     public function destroy($id)
     {
-        $aluno = \App\Aluno::find($id);
-        $pessoa = \App\Pessoa::find($aluno->pessoa_id);
+        $aluno = \App\Aluno::withoutTrashed()->where('id', '=', $id)->first();
+        $pessoa = \App\Pessoa::withoutTrashed()->where('id', '=', $aluno->pessoa_id)->first();
 
         $aluno->delete();
         $pessoa->delete();
 
         return redirect()->route('/aluno/listar');
+    }
+
+    public function showRecupera(Request $request){
+        $pessoa = \App\Pessoa::onlyTrashed()->where('cpf', '=', $request->cpf)->first();
+        if((!empty($pessoa))){
+            $aluno = \App\Aluno::onlyTrashed()->where('pessoa_id', '=', $pessoa->id)->first();
+            return view("/show/RecuperaAluno", ["pessoa" => $pessoa, "aluno" => $aluno]);
+        }
+        session()->flash('alert-danger', 'Pessoa não encontrada. Favor verificar os dados.');
+        return view("/show/RecuperarAlunos");
+
+    }
+
+    public function recuperar($cpf){
+        $pessoa = \App\Pessoa::onlyTrashed()->where('cpf', '=', $cpf)->first();
+        $aluno = \App\Aluno::onlyTrashed()->where('pessoa_id', '=', $pessoa->id)->first();
+
+        $pessoa->restore();
+        $aluno->restore();
+        return redirect()->route('/aluno/listar');
+    }
+
+    public function listarRecuperaAluno(){
+        return view("/show/RecuperarAlunos");
     }
 }

@@ -58,6 +58,9 @@
                                     <a class="dropdown-item" href="{{route('/aluno/listar')}}">
                                         Listar Alunos
                                     </a>
+                                    <a class="dropdown-item" href="{{route('/aluno/listar/recupera')}}">
+                                        Recupera Alunos
+                                    </a>
                                 </div>
                             </div>
 

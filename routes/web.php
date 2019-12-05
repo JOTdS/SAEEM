@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//rotas de aluno
 Route::post('/aluno/gravar', 'AlunoController@store')->name('/aluno/gravar')->middleware('auth');
 Route::get('/aluno/cadastrar', 'AlunoController@create')->name('/aluno/cadastrar')->middleware('auth');
 Route::get('/aluno/listar', 'AlunoController@listar')->name('/aluno/listar')->middleware('auth');
@@ -26,6 +27,9 @@ Route::get('/aluno/editar/{id}', 'AlunoController@edit')->name('/aluno/editar')-
 Route::post('/aluno/update', 'AlunoController@update')->name('/aluno/update')->middleware('auth');
 Route::get('/aluno/remover/{id}', 'AlunoController@destroy')->name('/aluno/remover')->middleware('auth');
 Route::get('/aluno/mostrar/{id}', 'AlunoController@show')->name('/aluno/mostrar')->middleware('auth');
+Route::get('/aluno/listar/recupera', 'AlunoController@listarRecuperaAluno')->name('/aluno/listar/recupera')->middleware('auth');
+Route::post('/aluno/showRecupera', 'AlunoController@showRecupera')->name('/aluno/showRecupera')->middleware('auth');
+Route::get('/aluno/recuperar/{cpf}', 'AlunoController@recuperar')->name('/aluno/recuperar')->middleware('auth');
 
 //rotas de funcionario
 Route::post('/funcionario/gravar', 'FuncionarioController@store')->name('/funcionario/gravar')->middleware('auth');
