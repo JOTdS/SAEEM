@@ -46,7 +46,7 @@
                             </tbody>
                         </table>
 
-                        <a href="/aluno/editar/{{$pessoa->usuario_id}}" class="btn btn-info">Editar</a>
+                        <a href="/aluno/editar/{{$pessoa->usuario_id}}" class="right btn btn-info">Editar</a>
                   </div>
                 </div>
             </div>

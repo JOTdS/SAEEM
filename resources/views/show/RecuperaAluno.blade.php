@@ -38,7 +38,7 @@
                                 <td data-title="cpf">{{ $pessoa->cpf }}</td>
                                 <td data-title="telefone">{{ $pessoa->telefone }}</td>
                                 <td data-title="endereco">{{ $pessoa->endereco }}</td>
-                                <td data-title="Acoes">
+                                <td class="right" data-title="Acoes">
                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ExemploModalCentralizado" >
                                         Recuperar
                                     </button>

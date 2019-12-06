@@ -6,10 +6,10 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                  @if (\Session::has('success'))
+                  @if (\Session::has('alert-success'))
                   <br>
                       <div class="alert alert-success">
-                          {!! \Session::get('success') !!}
+                          {!! \Session::get('alert-success') !!}
                       </div>
                   @endif
                   <div class="panel-body">
@@ -39,7 +39,7 @@
                                     <td data-title="cpf">{{ $pessoa->cpf }}</td>
                                     <td data-title="telefone">{{ $pessoa->telefone }}</td>
                                     <td data-title="endereco">{{ $pessoa->endereco }}</td>
-                                    <td data-title="Acoes">
+                                    <td class="right" data-title="Acoes">
                                         <a href="/aluno/editar/{{$pessoa->id}}" class="btn btn-info">Editar</a>
                                         <a href="/aluno/mostrar/{{$pessoa->id}}" class="btn btn-info">Visualizar</a>
                                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ExemploModalCentralizado" >

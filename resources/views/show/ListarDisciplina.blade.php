@@ -35,7 +35,7 @@
                                       <td data-title="Nº">{{ $disciplina->id }}</td>
                                       <td data-title="Nome">{{ $disciplina->nome }}</td>
                                       <td data-title="cpf">{{ $disciplina->descricao }}</td>
-                                      <td>
+                                      <td  class="right">
                                         <a href="/disciplina/visualizar/{{$disciplina->id}}" class="btn btn-primary">Ver</a>
                               					<a href="/disciplina/editar/{{$disciplina->id}}" class="btn btn-info">Editar</a>
 

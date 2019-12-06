@@ -43,7 +43,7 @@
                                     <td data-title="Descricao">{{ $serie->descricao }}</td>
                                     <?php $escola = \App\Escola::find($serie->escola_id)?>
                                     <td data-title="Escola">{{ $escola->nome }}</td>
-                                    <td data-title="Acoes">
+                                    <td class="right" data-title="Acoes">
                                         <a href="/serie/editar/{{$serie->id}}" class="btn btn-info">Editar</a>
                                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ExemploModalCentralizado" >
                                           Remover
