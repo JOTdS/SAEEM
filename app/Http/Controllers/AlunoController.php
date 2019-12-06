@@ -185,4 +185,9 @@ class AlunoController extends Controller
     public function listarRecuperaAluno(){
         return view("/show/RecuperarAlunos");
     }
+
+    public function relatorio(Request $request){
+        $alunos = \App\Pessoa::where($request->tipo, $request->pesquisar)->get();
+        return view("/show/ListarAlunos", ["alunos" => $alunos]);
+    }
 }

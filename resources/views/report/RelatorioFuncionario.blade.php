@@ -17,25 +17,25 @@
                   <div class="shadow p-4 mb-4 bg-white rounded container-fluid" style="overflow-x: auto; border">
                     <form method="POST" action="{{ route('/funcionario/relatorioCargo') }}">
                       {{ csrf_field() }}
-                        @csrf
-                        <div class="form-group row">
-                            <label for="cargo" class="col-md-4 col-form-label text-md-right">{{ __('Listar por cargo') }}</label>
-                            <div class="form-group row">
+                      @csrf
+                      <div class="form-group row">
+                          <label for="cargo" class="col-md-4 col-form-label text-md-right">{{ __('Listar por cargo') }}</label>
+                          <div class="form-group row">
 
-                                <div class="col-md-6">
-                                  <select name="cargo" id="cargo" type="text"  class="form-control selectpicker" required value= {{ old('cargo')}}> {{ $errors->first('cargo')}}
-                                    <option value=""> </option>
-                                    <option value="0">Gestor</option>
-                                    <option value="1">Técnico</option>
-                                    <option value="2">Professor</option>
-                                  </select>
-                                </div>
-                                <button type="submit" class="btn btn-primary">
-                                    Buscar
-                                </button>
-                            </div>
-                        </div>
-                      </form>
+                              <div class="col-md-6">
+                                <select name="cargo" id="cargo" type="text"  class="form-control selectpicker" required value= {{ old('cargo')}}> {{ $errors->first('cargo')}}
+                                  <option value=""> </option>
+                                  <option value="0">Gestor</option>
+                                  <option value="1">Técnico</option>
+                                  <option value="2">Professor</option>
+                                </select>
+                              </div>
+                              <button type="submit" class="btn btn-primary">
+                                  Buscar
+                              </button>
+                          </div>
+                      </div>
+                    </form>
 
                       <form method="POST" action="{{ route('/funcionario/relatorioNome') }}">
                       {{ csrf_field() }}

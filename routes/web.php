@@ -30,6 +30,7 @@ Route::get('/aluno/mostrar/{id}', 'AlunoController@show')->name('/aluno/mostrar'
 Route::get('/aluno/listar/recupera', 'AlunoController@listarRecuperaAluno')->name('/aluno/listar/recupera')->middleware('auth');
 Route::post('/aluno/showRecupera', 'AlunoController@showRecupera')->name('/aluno/showRecupera')->middleware('auth');
 Route::get('/aluno/recuperar/{cpf}', 'AlunoController@recuperar')->name('/aluno/recuperar')->middleware('auth');
+Route::post('/aluno/relatorio', 'AlunoController@relatorio')->name('/aluno/relatorio')->middleware('auth');
 
 //rotas de funcionario
 Route::post('/funcionario/gravar', 'FuncionarioController@store')->name('/funcionario/gravar')->middleware('auth');

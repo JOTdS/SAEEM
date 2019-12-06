@@ -12,6 +12,21 @@
                           {!! \Session::get('alert-success') !!}
                       </div>
                   @endif
+                  <form method="POST" action="{{ route('/aluno/relatorio') }}">
+                    {{ csrf_field() }}
+                    @csrf
+                    <div class="row">
+                      <select name="tipo" placeholder="Digite o que quer pesquisar aqui." id="tipo" type="text"  class="form-control selectpicker" required value= {{ old('tipo')}}> {{ $errors->first('tipo')}}
+                        <option value="">Tipo</option>
+                        <option value="nome">Nome</option>
+                        <option value="cpf">CPF</option>
+                      </select>
+                      <input name="pesquisar" id= "pesquisar" type="text" class="form-control" placeholder="Digite" required value= {{ old('pesquisar')}}> {{ $errors->first('pesquisar')}}
+                      <button type="submit" class="btn btn-primary">
+                          Buscar
+                      </button>
+                    </div>
+                  </form>
                   <div class="panel-body">
                       @if(count($alunos) == 0 and count($alunos) == 0)
                       <div class="alert alert-danger">
