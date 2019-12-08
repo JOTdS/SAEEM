@@ -111,6 +111,8 @@
                                         </a>
                                     </div>
                                 </div>
+
+                            <div class="dropdown">
                                 <button class="dropbtn">Disciplina</button>
                                 <div class="dropdown-content">
                                     <a class="dropdown-item" href="{{route('/disciplina/cadastrar')}}">
@@ -124,6 +126,22 @@
                                     </a>
                                 </div>
                             </div>
+
+                            <div class="dropdown">
+                                <button class="dropbtn">Avaliação</button>
+                                <div class="dropdown-content">
+                                    <a class="dropdown-item" href="{{route('/avaliacao/cadastrar')}}">
+                                        Nova Avaliação
+                                    </a>
+                                    <a class="dropdown-item" href="{{route('/avaliacao/listar')}}">
+                                        Listar Avaliações
+                                    </a>
+                                    <a class="dropdown-item" href="{{route('/avaliacao/relatorios')}}">
+                                        Relatórios Avaliações
+                                    </a>
+                                </div>
+                            </div>
+
                         @endif
                     </ul>
 
