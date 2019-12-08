@@ -16,6 +16,8 @@ class CreateAvaliacaosTable extends Migration
         Schema::create('avaliacaos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->float('nota');
+            $table->date('data');
+            $table->text('descricao');
             $table->bigInteger('aluno_id');
             $table->bigInteger('disciplina_id');
             $table->timestamps();

@@ -90,3 +90,13 @@ Route::get('/disciplina/remover/{id}', 'DisciplinaController@remover')->name('/d
 Route::get('/disciplina/relatorios', 'DisciplinaController@gerarRelatorios')->name('/disciplina/relatorios')->middleware('auth');
 Route::post('/disciplina/relatorioNome', 'DisciplinaController@gerarRelatorioNome')->name('/disciplina/relatorioNome')->middleware('auth');
 
+//rotas de disciplina
+Route::post('/avaliacao/gravar/{id,id2}', 'AvaliacaoController@store')->name('/avaliacao/gravar')->middleware('auth');
+Route::get('/avaliacao/cadastrar', 'AvaliacaoController@create')->name('/avaliacao/cadastrar')->middleware('auth');
+Route::get('/avaliacao/listar', 'AvaliacaoController@listar')->name('/avaliacao/listar')->middleware('auth');
+Route::get('/avaliacao/editar/{id}', 'AvaliacaoController@edit')->name('/avaliacao/editar')->middleware('auth');
+Route::get('/avaliacao/visualizar/{id}', 'AvaliacaoController@show')->name('/avaliacao/visualizar')->middleware('auth');
+Route::post('/avaliacao/atualizar','AvaliacaoController@update')->name('/avaliacao/atualizar')->middleware('auth');
+Route::get('/avaliacao/remover/{id}', 'AvaliacaoController@remover')->name('/avaliacao/remover')->middleware('auth');
+Route::get('/avaliacao/relatorios', 'AvaliacaoController@gerarRelatorios')->name('/avaliacao/relatorios')->middleware('auth');
+Route::post('/avaliacao/relatorioNome', 'AvaliacaoController@gerarRelatorioNome')->name('/avaliacao/relatorioNome')->middleware('auth');
