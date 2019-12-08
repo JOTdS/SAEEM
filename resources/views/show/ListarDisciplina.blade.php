@@ -38,7 +38,7 @@
                                   <tr>
                                       <td data-title="Nº">{{ $disciplina->id }}</td>
                                       <td data-title="Nome">{{ $disciplina->nome }}</td>
-                                      <td data-title="Cpf">{{ $disciplina->descricao }}</td>
+                                      <td data-title="Descrição">{{ $disciplina->descricao }}</td>
                                       <td data-title="Turma">{{ $turmasResultado[$index]->nome}}</td>
                                       <!-- <td data-title="Turma">
                                       @foreach ($turmasResultado as $turma)

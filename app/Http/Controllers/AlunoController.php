@@ -8,6 +8,7 @@ use App\User;
 use App\Aluno;
 use App\Pessoa;
 use Illuminate\Support\Facades\DB;
+use PHPUnit\Framework\Constraint\IsFalse;
 
 class AlunoController extends Controller
 {
@@ -155,22 +156,30 @@ class AlunoController extends Controller
 
     public function showRecupera(Request $request){
         $pessoa = \App\Pessoa::onlyTrashed()->where('cpf', '=', $request->cpf)->first();
-        if((!empty($pessoa))){
+        if((!empty($pessoa)) and ($pessoa->is_aluno)){
             $aluno = \App\Aluno::onlyTrashed()->where('pessoa_id', '=', $pessoa->id)->first();
             return view("/show/RecuperaAluno", ["pessoa" => $pessoa, "aluno" => $aluno]);
         }
-        session()->flash('alert-danger', 'Pessoa não encontrada. Favor verificar os dados.');
+        session()->flash('alert-danger', 'Aluno não encontrado. Favor verificar os dados.');
         return view("/show/RecuperarAlunos");
 
     }
 
     public function recuperar($cpf){
         $pessoa = \App\Pessoa::onlyTrashed()->where('cpf', '=', $cpf)->first();
-        $aluno = \App\Aluno::onlyTrashed()->where('pessoa_id', '=', $pessoa->id)->first();
+        if((!empty($pessoa)) and ($pessoa->is_aluno)){
+            $aluno = \App\Aluno::onlyTrashed()->where('pessoa_id', '=', $pessoa->id)->first();
+            $pessoa->restore();
+            $aluno->restore();
 
-        $pessoa->restore();
-        $aluno->restore();
-        return redirect()->route('/aluno/listar');
+            session()->flash('alert-success', 'Aluno recuperado com sucesso.');
+            return redirect()->route('/aluno/listar');
+        }else if((!$pessoa->is_aluno)){
+            session()->flash('alert-danger', 'Pessoa encontrada não é um aluno. Favor verificar os dados.');
+            return view("/show/RecuperarAlunos");
+        }
+        session()->flash('alert-danger', 'Pessoa não encontrada. Favor verificar os dados.');
+        return view("/show/RecuperarAlunos");
     }
 
     public function listarRecuperaAluno(){

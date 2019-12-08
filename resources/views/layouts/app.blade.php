@@ -99,7 +99,6 @@
                                     </a>
                                 </div>
                             </div>
-
                             <div class="dropdown">
                                     <button class="dropbtn">Turma_Serie</button>
                                     <div class="dropdown-content">
@@ -126,7 +125,6 @@
                                     </a>
                                 </div>
                             </div>
-
                             <div class="dropdown">
                                 <button class="dropbtn">Avaliação</button>
                                 <div class="dropdown-content">
@@ -141,7 +139,6 @@
                                     </a>
                                 </div>
                             </div>
-
                         @endif
                     </ul>
 
