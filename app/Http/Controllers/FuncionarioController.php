@@ -43,8 +43,9 @@ class Funcionariocontroller extends Controller
       $request->validate(User::$rules, User::$messages);
       $user->name = $request->nome;
       $user->email = $request->email;
-      //$user->password = password_hash($request->cpf, PASSWORD_DEFAULT);
-      $user->password = $request->senha;
+      $user->password = password_hash($request->senha, PASSWORD_DEFAULT);
+      //$user->password = $request->senha;
+      $user->save();    //salva o usuario apos validar os dados
 
       //cria pessoa
       $pessoa = new Pessoa();
@@ -55,7 +56,6 @@ class Funcionariocontroller extends Controller
       $pessoa->endereco = $request->endereco;
       $pessoa->sexo = $request->sexo;
       $pessoa->descricao = $request->descricao;
-      $user->save();    //salva o usuario apos validar os dados
       $pessoa->usuario_id = $user->id;
       $pessoa->is_funcionario = true;
 
