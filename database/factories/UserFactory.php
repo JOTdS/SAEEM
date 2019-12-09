@@ -29,6 +29,7 @@ $factory->define(User::class, function (Faker $faker) {
     return [
         'name' => "Teste",
         'email' => "teste@teste",
+        'is_adm' => true,
         'password' => password_hash("testeteste", PASSWORD_DEFAULT), // password
     ];
 });
