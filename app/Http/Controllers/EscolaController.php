@@ -63,26 +63,39 @@ class EscolaController extends Controller
       return view('/show/ListarEscola', ['escolas' => $escolas]);
   }
 
- /**
+  /**
    * Show the form for editing the specified resource.
    *
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
+  public function edit($id)
+  {
+      $escola = \App\Escola::find($id);
+      return view("/edit/EditarEscola", ["escola" => $escola]);
+  }
 
-  public function editar(Request $resquest)
+  /**
+   * Update the specified resource in storage.
+   *
+   * @param  \Illuminate\Http\Request  $request
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+  public function update(Request $request)
   {
       //atualizar escola
-      $escola = Escola::find($request->id);
-      $escola->nome = $resquest->get('nome');
-      $escola->descricao = $resquest->get('descricao');
-      $escola->endereco = $resquest->get('endereco');
-      $escola->telefone = $resquest->get('telefone');
-      $escola->modalidade = $resquest->get('modalidade');
-      $escola->inep = $resquest->get('inep');
-      $escola->update();
+      $escola = \App\Escola::find($request->id);
 
-      return redirect("escola/listar");
+      $escola->nome = $request->nome;
+      $escola->descricao = $request->descricao;
+      $escola->endereco = $request->endereco;
+      $escola->telefone = $request->telefone;
+      $escola->modalidade = $request->modalidade;
+      $escola->inep = $request->inep;
+      $escola->save();
+
+      return redirect()->route('/escola/listar');
   }
 
   public function viewInfo(Request $request)
