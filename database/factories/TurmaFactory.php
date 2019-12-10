@@ -7,11 +7,11 @@ use Faker\Generator as Faker;
 
 $factory->define(\App\Turma::class, function (Faker $faker) {
   $nome = $faker->unique()->name;
-  $modal = ['Creche Infantil Parcial','Creche Infantil Integral',
-          'Infantil', 'Ensino Fundamental', 'EJA', 'Quilombola'];
+  $posicaoLetras = [' A', ' B', ' C',' D'];
     return [
       'nome' => $nome,
-      'modalidade' => $modal[$faker->numberBetween(0,5)],
-      'descricao' => $faker->text(150)
+      'modalidade' => $posicaoLetras[$faker->numberBetween(0,3)],
+      'descricao' => $faker->text(150),
+      'serie_id' => function(){return factory(\App\Serie::class)->create()->id;}
     ];
 });
