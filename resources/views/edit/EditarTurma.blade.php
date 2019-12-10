@@ -44,7 +44,7 @@
                                 <select class="form-control{{ $errors->has('serie_id') ? ' is-invalid' : '' }}" id="series" name="serie_id">
                                     <option value="{{$serie_nome->id}}">{{$serie_nome->nome}}</option>
                                     @foreach($series as $serie)
-                                        <option value="{{$serie->nome}}" {{ old('serie_id') == $serie->nome ? 'selected' : '' }}>{{$serie->nome}}</option>
+                                        <option value="{{$serie_nome->id}}" {{ old('serie_id') == $serie->nome ? 'selected' : '' }}>{{$serie->nome}}</option>
                                     @endforeach
                                 </select>
                                 @if ($errors->has('serie_id'))

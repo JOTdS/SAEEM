@@ -48,7 +48,7 @@ class TurmaController extends Controller
             $turma->descricao = $request->descricao;
             $turma->serie_id = $serie->id;
             $turma->save();
-    
+
             session()->flash('alert-success', 'Turma cadastrada com sucesso.');
             return redirect()->route('/turma/listar');
         }else{
@@ -99,7 +99,7 @@ class TurmaController extends Controller
         $serie = \App\Serie::where('nome', '=', $request->serie_id)->first();
 
         $turma->nome = $request->nome;
-        $turma->serie_id = $serie->id;
+        $turma->serie_id = $request->serie_id;
         $turma->modalidade = $request->modalidade;
         $turma->descricao = $request->descricao;
         $turma->save();
@@ -118,7 +118,7 @@ class TurmaController extends Controller
         $turma_serie = \App\Turma_Serie::onlyTrashed()->where('turma_id', $id)->get();
         if(empty($turma_serie)){
             $turma = \App\Turma::find($id);
-            $turma->delete();          
+            $turma->delete();
         }else{
             session()->flash('alert-danger', 'A turma é dependência de Turma_Serie.');
         }
