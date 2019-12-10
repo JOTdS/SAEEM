@@ -23,7 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/aluno/gravar', 'AlunoController@store')->name('/aluno/gravar')->middleware('AuthGestor');
 Route::get('/aluno/cadastrar', 'AlunoController@create')->name('/aluno/cadastrar')->middleware('AuthGestor');
 Route::get('/aluno/listar', 'AlunoController@listar')->name('/aluno/listar')->middleware('AuthTecnico');
-Route::get('/aluno/relatorio', 'AlunoController@relatorio')->name('/aluno/relatorio')->middleware('AuthTecnico');
+Route::post('/aluno/relatorio', 'AlunoController@relatorio')->name('/aluno/relatorio')->middleware('AuthTecnico');
 Route::get('/aluno/editar/{id}', 'AlunoController@edit')->name('/aluno/editar')->middleware('AuthTecnico');
 Route::post('/aluno/update', 'AlunoController@update')->name('/aluno/update')->middleware('AuthTecnico');
 Route::get('/aluno/remover/{id}', 'AlunoController@destroy')->name('/aluno/remover')->middleware('AuthGestor');
@@ -48,7 +48,8 @@ Route::post('/funcionario/relatorioNome', 'FuncionarioController@gerarRelatorioN
 Route::post('/escola/gravar', 'EscolaController@store')->name('/escola/gravar')->middleware('AuthAdministrador');
 Route::get('/escola/cadastrar', 'EscolaController@create')->name('/escola/cadastrar')->middleware('AuthAdministrador');
 Route::get('/escola/listar', 'EscolaController@listar')->name('/escola/listar')->middleware('AuthGestor');
-Route::get('/escola/editar/{id}', 'EscolaController@viewInfo')->name('/escola/viewInfo')->middleware('AuthGestor');
+Route::get('/escola/editar/{id}', 'EscolaController@edit')->name('/escola/editar')->middleware('AuthGestor');
+Route::post('/escola/update', 'EscolaController@update')->name('/escola/update')->middleware('AuthGestor');
 Route::get('/escola/mostrar/{id}', 'EscolaController@show')->name('/escola/mostrar')->middleware('AuthGestor');
 Route::post('/escola/atualizar', 'EscolaController@editar')->name('/escola/atualizar')->middleware('AuthGestor');
 Route::get('/escola/remover/{id}', 'EscolaController@remover')->name('/escola/remover')->middleware('AuthAdministrador');

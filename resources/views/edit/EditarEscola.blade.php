@@ -9,7 +9,7 @@
                 <div class="card-header">{{ __('Atualizar Escola') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{URL('/escola/atualizar')}}">
+                    <form method="POST" action="{{route('/escola/update')}}">
 
                       <input type="hidden" name="id" value="{{$escola->id}}">
 
