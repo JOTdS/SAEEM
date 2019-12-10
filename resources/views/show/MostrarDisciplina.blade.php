@@ -15,6 +15,9 @@
                                     <th>Nº</th>
                                     <th>NOME</th>
                                     <th>DESCRIÇÃO</th>
+                                    <th>TURMA</th>
+                                    <th>ANO</th>
+                                    <th>TURNO</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -22,10 +25,16 @@
                                         <td data-title="Id">{{ $disciplina->id }}</td>
                                         <td data-title="Nome">{{ $disciplina->nome }}</td>
                                         <td data-title="Descricao">{{ $disciplina->descricao }}</td>
-                                    </tr>
+                                        @foreach ($disciplina_turmas as $index => $disciplina_turma)
+                                          <td data-title="Turma"> {{ $turmasResultado[$index]->nome }}</td>
+                                          <td data-title="Ano">{{ $disciplina_turma->ano }}</td>
+                                          <td data-title="Turno">{{ $disciplina_turma->turno }}</td>
+                                        </tr>
+
+                                        @endforeach
                                 </tbody>
                             </table>
-                        <a href="/disciplina/listar/" class="btn btn-primary">Voltar</a>
+                        <a href="/disciplina/relatorios/" class="btn btn-primary">Voltar</a>
                         <a href="/disciplina/editar/{{$disciplina->id}}" class="btn btn-info">Editar</a>
                         <!-- <a href="/funcionario/remover/{{$disciplina->id}}" class="btn btn-danger" style="text-align:right;">Remover</a> -->
 

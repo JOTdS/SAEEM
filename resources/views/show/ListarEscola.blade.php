@@ -27,11 +27,11 @@
                               <tr>
                                   <th>Nº</th>
                                   <th>Nome</th>
-                                  <th>descrição</th>
-                                  <th>endereco</th>
-                                  <th>telefone</th>
-                                  <th>modalidade</th>
-                                  <th>inep</th>
+                                  <th>Descrição</th>
+                                  <th>Endereço</th>
+                                  <th>Telefone</th>
+                                  <th>Modalidade</th>
+                                  <th>Inep</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -44,7 +44,7 @@
                                     <td data-title="telefone">{{ $escola->telefone }}</td>
                                     <td data-title="modalidade">{{ $escola->modalidade }}</td>
                                     <td data-title="inep">{{ $escola->inep }}</td>
-                                    <td data-title="Acoes">
+                                    <td class="right" data-title="Acoes">
                                         <a href="/escola/mostrar/{{$escola->id}}" class="btn btn-info">Visualizar</a> -
                                         <a href="/escola/editar/{{$escola->id}}" class="btn btn-info">Editar</a> -
                             			<a href="/escola/remover/{{$escola->id}}" class="btn btn-danger">Remover</a>

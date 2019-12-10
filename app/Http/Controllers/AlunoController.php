@@ -8,6 +8,7 @@ use App\User;
 use App\Aluno;
 use App\Pessoa;
 use Illuminate\Support\Facades\DB;
+use PHPUnit\Framework\Constraint\IsFalse;
 
 class AlunoController extends Controller
 {
@@ -48,6 +49,7 @@ class AlunoController extends Controller
         $pessoa->telefone = $request->telefone;
         $pessoa->endereco = $request->endereco;
         $pessoa->sexo = $request->sexo;
+        $pessoa->is_aluno = true;
         $pessoa->descricao = $request->descricao;
         $pessoa->save();
 
@@ -73,7 +75,7 @@ class AlunoController extends Controller
         return view("/show/MostrarAluno", ["pessoa" => $pessoa, "aluno" => $aluno]);
     }
     public function listar(){
-        $alunos = \App\Aluno::All();
+        $alunos = \App\Pessoa::where('is_aluno', '=', 'true')->get();
         return view("/show/ListarAlunos", ["alunos" => $alunos]);
     }
 
@@ -85,10 +87,10 @@ class AlunoController extends Controller
      */
     public function edit($id)
     {
-        $pessoa = \App\Pessoa::where('usuario_id', '=', $id)->first();
-        $aluno = \App\Aluno::where('pessoa_id', '=', $pessoa->id)->first();
-        //$pessoa = \App\Pessoa::find($user->id);
-        //$aluno = \App\Aluno::find($pessoa->id);
+        //$pessoa = \App\Pessoa::where('usuario_id', '=', $id)->first();
+        //$aluno = \App\Aluno::where('pessoa_id', '=', $pessoa->id)->first();
+        $pessoa = \App\Pessoa::find($id);
+        $aluno = \App\Aluno::find($pessoa->id);
         return view("/edit/EditarAluno", ["pessoa" => $pessoa, "aluno" => $aluno]);
     }
 
@@ -101,8 +103,10 @@ class AlunoController extends Controller
      */
     public function update(Request $request)
     {
-        $pessoa = \App\Pessoa::where('usuario_id', '=', $request->id)->first();
-        $aluno = \App\Aluno::where('pessoa_id', '=', $pessoa->id)->first();
+        //$pessoa = \App\Pessoa::where('usuario_id', '=', $request->id)->first();
+        //$aluno = \App\Aluno::where('pessoa_id', '=', $pessoa->id)->first();
+        $pessoa = \App\Pessoa::find($request->id);
+        $aluno = \App\Aluno::find($pessoa->id);
 
         $rulesPessoas = [
             'nome' => 'required|max:100|string',
@@ -111,10 +115,6 @@ class AlunoController extends Controller
             'endereco' => 'max:255|string',
             'descricao' => 'max:255|string',
             'sexo' => 'required|max:1|string'
-        ];
-
-        $rulesUser = [
-            'email' => 'required','unique:users,email'.$user->email,'max:100|min:4|email',
         ];
 
         $request->validate(Aluno::$rules, Aluno::$messages);
@@ -143,12 +143,44 @@ class AlunoController extends Controller
      */
     public function destroy($id)
     {
-        $aluno = \App\Aluno::find($id);
-        $pessoa = \App\Pessoa::find($aluno->pessoa_id);
+        $aluno = \App\Aluno::withoutTrashed()->where('id', '=', $id)->first();
+        $pessoa = \App\Pessoa::withoutTrashed()->where('id', '=', $aluno->pessoa_id)->first();
 
         $aluno->delete();
         $pessoa->delete();
 
         return redirect()->route('/aluno/listar');
+    }
+
+    public function showRecupera(Request $request){
+        $pessoa = \App\Pessoa::onlyTrashed()->where('cpf', '=', $request->cpf)->first();
+        if((!empty($pessoa)) and ($pessoa->is_aluno)){
+            $aluno = \App\Aluno::onlyTrashed()->where('pessoa_id', '=', $pessoa->id)->first();
+            return view("/show/RecuperaAluno", ["pessoa" => $pessoa, "aluno" => $aluno]);
+        }
+        session()->flash('alert-danger', 'Aluno não encontrado. Favor verificar os dados.');
+        return view("/show/RecuperarAlunos");
+
+    }
+
+    public function recuperar($cpf){
+        $pessoa = \App\Pessoa::onlyTrashed()->where('cpf', '=', $cpf)->first();
+        if((!empty($pessoa)) and ($pessoa->is_aluno)){
+            $aluno = \App\Aluno::onlyTrashed()->where('pessoa_id', '=', $pessoa->id)->first();
+            $pessoa->restore();
+            $aluno->restore();
+
+            session()->flash('alert-success', 'Aluno recuperado com sucesso.');
+            return redirect()->route('/aluno/listar');
+        }else if((!$pessoa->is_aluno)){
+            session()->flash('alert-danger', 'Pessoa encontrada não é um aluno. Favor verificar os dados.');
+            return view("/show/RecuperarAlunos");
+        }
+        session()->flash('alert-danger', 'Pessoa não encontrada. Favor verificar os dados.');
+        return view("/show/RecuperarAlunos");
+    }
+
+    public function listarRecuperaAluno(){
+        return view("/show/RecuperarAlunos");
     }
 }
