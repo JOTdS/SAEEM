@@ -36,6 +36,36 @@
                               <input name="descricao" id="descricao" type="text" class="form-control" value= {{ $turma->descricao }}> {{ $errors->first('descricao')}}
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="serie_id" class="col-md-4 col-form-label text-md-right">{{ __('Serie') }}</label>
+                            @if(count($series) != 0 and count($series) != 0)
+                            <?php $serie_nome = \App\Serie::find($turma->serie_id)?>
+                            <div class="col-md-6">
+                                <select class="form-control{{ $errors->has('serie_id') ? ' is-invalid' : '' }}" id="series" name="serie_id">
+                                    <option value="{{$serie_nome->id}}">{{$serie_nome->nome}}</option>
+                                    @foreach($series as $serie)
+                                        <option value="{{$serie->nome}}" {{ old('serie_id') == $serie->nome ? 'selected' : '' }}>{{$serie->nome}}</option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('serie_id'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('serie_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                            @else
+                            <div class="col-md-6">
+                                <select class="form-control{{ $errors->has('serie_id') ? ' is-invalid' : '' }}" id="series" name="serie_id">
+                                                    <option value="">Não há series cadastradas</option>
+                                </select>
+                                @if ($errors->has('serie_id'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('serie_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                            @endif
+                        </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                               <button type="submit" class="btn btn-primary">

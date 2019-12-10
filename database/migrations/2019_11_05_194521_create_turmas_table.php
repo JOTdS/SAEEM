@@ -18,6 +18,7 @@ class CreateTurmasTable extends Migration
             $table->timestamps();
             $table->string('nome')->unique();
             $table->string('modalidade')->nullable();
+            $table->bigInteger('serie_id');
             $table->text('descricao')->nullable();
             $table->softDeletes();
         });

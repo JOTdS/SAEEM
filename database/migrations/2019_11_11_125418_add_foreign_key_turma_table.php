@@ -14,7 +14,7 @@ class AddForeignKeyTurmaTable extends Migration
     public function up()
     {
         Schema::table('turmas', function (Blueprint $table) {            
-            //$table->foreign('serie_id')->references('id')->on('series');
+            $table->foreign('serie_id')->references('id')->on('series');
             //$table->foreign('disciplina_id')->references('id')->on('disciplinas');
         });
     }
@@ -27,7 +27,7 @@ class AddForeignKeyTurmaTable extends Migration
     public function down()
     {
         Schema::table('turmas', function (Blueprint $table) {            
-            //$table->dropForeign('turmas_serie_id_foreign');
+            $table->dropForeign('turmas_serie_id_foreign');
             //$table->dropForeign('turmas_disciplina_id_foreign');
         });
     }

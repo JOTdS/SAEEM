@@ -12,13 +12,15 @@ class Turma extends Model
     protected $fillable = [
         'nome',
         'modalidade',
+        'serie_id',
         'descricao'
     ];
 
     public static $rules = [
         'nome' => 'required|max:50|min:3|string',
         'modalidade' => 'max:200',
-        'descricao' => 'required|max:500|min:3|string'
+        'descricao' => 'required|max:500|min:3|string',
+        'serie_id' => 'required'
     ];
 
     public static $messages = [

@@ -15,6 +15,7 @@ class CreateSeriesTable extends Migration
     {
         Schema::create('series', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->text('nome');
             $table->text('modalidade')->nullable();
             $table->text('descricao')->nullable();
             $table->bigInteger('escola_id');

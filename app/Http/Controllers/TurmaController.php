@@ -24,7 +24,8 @@ class TurmaController extends Controller
      */
     public function create()
     {
-        return view('create/CadastrarTurma');
+        $series = \App\Serie::All();
+        return view('create/CadastrarTurma', ['series' => $series]);
     }
 
     /**
@@ -38,12 +39,22 @@ class TurmaController extends Controller
         $request->validate(Turma::$rules, Turma::$messages);
         $turma = new Turma();
 
-        $turma->nome = $request->nome;
-        $turma->modalidade = $request->modalidade;
-        $turma->descricao = $request->descricao;
-        $turma->save();
+        $serie = \App\Serie::where('nome', '=', $request->serie_id)->get();
 
-        return redirect()->route('/turma/listar');
+        if(!empty($serie)){
+            $serie = \App\Serie::where('nome', '=', $request->serie_id)->first();
+            $turma->nome = $request->nome;
+            $turma->modalidade = $request->modalidade;
+            $turma->descricao = $request->descricao;
+            $turma->serie_id = $serie->id;
+            $turma->save();
+    
+            session()->flash('alert-success', 'Turma cadastrada com sucesso.');
+            return redirect()->route('/turma/listar');
+        }else{
+            session()->flash('alert-danger', 'A série informada não está cadastrada.');
+        }
+        session()->flash('alert-danger','Verifique os dados do cadastro de Turmas.');
     }
     /**
      * Display the specified resource.
@@ -69,7 +80,8 @@ class TurmaController extends Controller
     public function edit($id)
     {
         $turma = \App\Turma::where('id', '=', $id)->first();
-        return view("/edit/EditarTurma", ["turma" => $turma]);
+        $series = \App\Serie::All();
+        return view("/edit/EditarTurma", ["turma" => $turma, 'series' => $series]);
     }
 
     /**
@@ -84,8 +96,10 @@ class TurmaController extends Controller
         $request->validate(Turma::$rules, Turma::$messages);
 
         $turma = \App\Turma::where('id', '=', $request->id)->first();
+        $serie = \App\Serie::where('nome', '=', $request->serie_id)->first();
 
         $turma->nome = $request->nome;
+        $turma->serie_id = $serie->id;
         $turma->modalidade = $request->modalidade;
         $turma->descricao = $request->descricao;
         $turma->save();

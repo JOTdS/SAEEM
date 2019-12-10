@@ -22,7 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 //rotas de aluno
 Route::post('/aluno/gravar', 'AlunoController@store')->name('/aluno/gravar')->middleware('AuthGestor');
 Route::get('/aluno/cadastrar', 'AlunoController@create')->name('/aluno/cadastrar')->middleware('AuthGestor');
-Route::get('/aluno/listar', 'AlunoController@listar')->name('/aluno/listar')->middleware('auth');
+Route::get('/aluno/listar', 'AlunoController@listar')->name('/aluno/listar')->middleware('AuthTecnico');
 Route::get('/aluno/editar/{id}', 'AlunoController@edit')->name('/aluno/editar')->middleware('AuthTecnico');
 Route::post('/aluno/update', 'AlunoController@update')->name('/aluno/update')->middleware('AuthTecnico');
 Route::get('/aluno/remover/{id}', 'AlunoController@destroy')->name('/aluno/remover')->middleware('AuthGestor');
@@ -53,22 +53,22 @@ Route::post('/escola/atualizar', 'EscolaController@editar')->name('/escola/atual
 Route::get('/escola/remover/{id}', 'EscolaController@remover')->name('/escola/remover')->middleware('AuthAdministrador');
 
 //rotas de Turmas
-Route::post('/turma/gravar', 'TurmaController@store')->name('/turma/gravar')->middleware('AuthAdministrador');
-Route::get('/turma/cadastrar', 'TurmaController@create')->name('/turma/cadastrar')->middleware('AuthAdministrador');
-Route::get('/turma/listar', 'TurmaController@listar')->name('/turma/listar')->middleware('AuthAdministrador');
-Route::get('/turma/editar/{id}', 'TurmaController@edit')->name('/turma/editar')->middleware('AuthAdministrador');
-Route::get('/turma/mostrar/{id}', 'TurmaController@show')->name('/turma/mostrar')->middleware('AuthAdministrador');
-Route::get('/turma/remover/{id}', 'TurmaController@destroy')->name('/turma/remover')->middleware('AuthAdministrador');
-Route::post('/turma/update', 'TurmaController@update')->name('/turma/update')->middleware('AuthAdministrador');
+Route::post('/turma/gravar', 'TurmaController@store')->name('/turma/gravar')->middleware('AuthTecnico');
+Route::get('/turma/cadastrar', 'TurmaController@create')->name('/turma/cadastrar')->middleware('AuthTecnico');
+Route::get('/turma/listar', 'TurmaController@listar')->name('/turma/listar')->middleware('AuthProfessor');
+Route::get('/turma/editar/{id}', 'TurmaController@edit')->name('/turma/editar')->middleware('AuthTecnico');
+Route::get('/turma/mostrar/{id}', 'TurmaController@show')->name('/turma/mostrar')->middleware('AuthProfessor');
+Route::get('/turma/remover/{id}', 'TurmaController@destroy')->name('/turma/remover')->middleware('AuthTecnico');
+Route::post('/turma/update', 'TurmaController@update')->name('/turma/update')->middleware('AuthTecnico');
 
 //rotas de Series
-Route::post('/serie/gravar', 'SerieController@store')->name('/serie/gravar')->middleware('AuthAdministrador');
-Route::get('/serie/cadastrar', 'SerieController@create')->name('/serie/cadastrar')->middleware('AuthAdministrador');
-Route::get('/serie/listar', 'SerieController@listar')->name('/serie/listar')->middleware('AuthAdministrador');
-Route::get('/serie/editar/{id}', 'SerieController@edit')->name('/serie/editar')->middleware('AuthAdministrador');
-Route::get('/serie/mostrar/{id}', 'SerieController@show')->name('/serie/mostrar')->middleware('AuthAdministrador');
-Route::get('/serie/remover/{id}', 'SerieController@destroy')->name('/serie/remover')->middleware('AuthAdministrador');
-Route::post('/serie/update', 'SerieController@update')->name('/serie/update')->middleware('AuthAdministrador');
+Route::post('/serie/gravar', 'SerieController@store')->name('/serie/gravar')->middleware('AuthTecnico');
+Route::get('/serie/cadastrar', 'SerieController@create')->name('/serie/cadastrar')->middleware('AuthTecnico');
+Route::get('/serie/listar', 'SerieController@listar')->name('/serie/listar')->middleware('AuthProfessor');
+Route::get('/serie/editar/{id}', 'SerieController@edit')->name('/serie/editar')->middleware('AuthTecnico');
+Route::get('/serie/mostrar/{id}', 'SerieController@show')->name('/serie/mostrar')->middleware('AuthProfessor');
+Route::get('/serie/remover/{id}', 'SerieController@destroy')->name('/serie/remover')->middleware('AuthTecnico');
+Route::post('/serie/update', 'SerieController@update')->name('/serie/update')->middleware('AuthTecnico');
 
 /*
 //rotas de Turma_Serie
