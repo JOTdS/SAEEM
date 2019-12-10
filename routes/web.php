@@ -23,6 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/aluno/gravar', 'AlunoController@store')->name('/aluno/gravar')->middleware('AuthGestor');
 Route::get('/aluno/cadastrar', 'AlunoController@create')->name('/aluno/cadastrar')->middleware('AuthGestor');
 Route::get('/aluno/listar', 'AlunoController@listar')->name('/aluno/listar')->middleware('AuthTecnico');
+Route::get('/aluno/relatorio', 'AlunoController@relatorio')->name('/aluno/relatorio')->middleware('AuthTecnico');
 Route::get('/aluno/editar/{id}', 'AlunoController@edit')->name('/aluno/editar')->middleware('AuthTecnico');
 Route::post('/aluno/update', 'AlunoController@update')->name('/aluno/update')->middleware('AuthTecnico');
 Route::get('/aluno/remover/{id}', 'AlunoController@destroy')->name('/aluno/remover')->middleware('AuthGestor');
