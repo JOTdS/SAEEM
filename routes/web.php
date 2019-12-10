@@ -33,8 +33,8 @@ Route::post('/aluno/showRecupera', 'AlunoController@showRecupera')->name('/aluno
 Route::get('/aluno/recuperar/{cpf}', 'AlunoController@recuperar')->name('/aluno/recuperar')->middleware('AuthGestor');
 
 //rotas de funcionario
-Route::post('/funcionario/gravar', 'FuncionarioController@store')->name('/funcionario/gravar')->middleware('AuthGestor');
-Route::get('/funcionario/cadastrar', 'FuncionarioController@create')->name('/funcionario/cadastrar')->middleware('AuthGestor');
+Route::post('/funcionario/gravar', 'FuncionarioController@store')->name('/funcionario/gravar')->middleware('AuthTecnico');
+Route::get('/funcionario/cadastrar', 'FuncionarioController@create')->name('/funcionario/cadastrar')->middleware('AuthTecnico');
 Route::get('/funcionario/listar', 'FuncionarioController@listar')->name('/funcionario/listar')->middleware('AuthTecnico');
 Route::get('/funcionario/editar/{id}', 'FuncionarioController@edit')->name('/funcionario/editar')->middleware('AuthTecnico');
 Route::get('/funcionario/visualizar/{id}', 'FuncionarioController@show')->name('/funcionario/visualizar')->middleware('AuthTecnico');
@@ -47,10 +47,10 @@ Route::post('/funcionario/relatorioNome', 'FuncionarioController@gerarRelatorioN
 //rotas de escola
 Route::post('/escola/gravar', 'EscolaController@store')->name('/escola/gravar')->middleware('AuthAdministrador');
 Route::get('/escola/cadastrar', 'EscolaController@create')->name('/escola/cadastrar')->middleware('AuthAdministrador');
-Route::get('/escola/listar', 'EscolaController@listar')->name('/escola/listar')->middleware('AuthAdministrador');
-Route::get('/escola/editar/{id}', 'EscolaController@viewInfo')->name('/escola/viewInfo')->middleware('AuthAdministrador');
-Route::get('/escola/mostrar/{id}', 'EscolaController@show')->name('/escola/mostrar')->middleware('AuthAdministrador');
-Route::post('/escola/atualizar', 'EscolaController@editar')->name('/escola/atualizar')->middleware('AuthAdministrador');
+Route::get('/escola/listar', 'EscolaController@listar')->name('/escola/listar')->middleware('AuthGestor');
+Route::get('/escola/editar/{id}', 'EscolaController@viewInfo')->name('/escola/viewInfo')->middleware('AuthGestor');
+Route::get('/escola/mostrar/{id}', 'EscolaController@show')->name('/escola/mostrar')->middleware('AuthGestor');
+Route::post('/escola/atualizar', 'EscolaController@editar')->name('/escola/atualizar')->middleware('AuthGestor');
 Route::get('/escola/remover/{id}', 'EscolaController@remover')->name('/escola/remover')->middleware('AuthAdministrador');
 
 //rotas de Turmas
@@ -83,15 +83,15 @@ Route::post('/turma_serie/update', 'Turma_SerieController@update')->name('/turma
 */
 
 //rotas de disciplina
-Route::post('/disciplina/gravar', 'DisciplinaController@store')->name('/disciplina/gravar')->middleware('AuthAdministrador');
-Route::get('/disciplina/cadastrar', 'DisciplinaController@create')->name('/disciplina/cadastrar')->middleware('AuthAdministrador');
-Route::get('/disciplina/listar', 'DisciplinaController@listar')->name('/disciplina/listar')->middleware('AuthAdministrador');
-Route::get('/disciplina/editar/{id}', 'DisciplinaController@edit')->name('/disciplina/editar')->middleware('AuthAdministrador');
-Route::get('/disciplina/visualizar/{id}', 'DisciplinaController@show')->name('/disciplina/visualizar')->middleware('AuthAdministrador');
-Route::post('/disciplina/atualizar', 'DisciplinaController@update')->name('/disciplina/atualizar')->middleware('AuthAdministrador');
-Route::get('/disciplina/remover/{id}', 'DisciplinaController@remover')->name('/disciplina/remover')->middleware('AuthAdministrador');
-Route::get('/disciplina/relatorios', 'DisciplinaController@gerarRelatorios')->name('/disciplina/relatorios')->middleware('AuthAdministrador');
-Route::post('/disciplina/relatorioNome', 'DisciplinaController@gerarRelatorioNome')->name('/disciplina/relatorioNome')->middleware('AuthAdministrador');
+Route::post('/disciplina/gravar', 'DisciplinaController@store')->name('/disciplina/gravar')->middleware('AuthGestor');
+Route::get('/disciplina/cadastrar', 'DisciplinaController@create')->name('/disciplina/cadastrar')->middleware('AuthGestor');
+Route::get('/disciplina/listar', 'DisciplinaController@listar')->name('/disciplina/listar')->middleware('AuthProfessor');
+Route::get('/disciplina/editar/{id}', 'DisciplinaController@edit')->name('/disciplina/editar')->middleware('AuthGestor');
+Route::get('/disciplina/visualizar/{id}', 'DisciplinaController@show')->name('/disciplina/visualizar')->middleware('AuthProfessor');
+Route::post('/disciplina/atualizar', 'DisciplinaController@update')->name('/disciplina/atualizar')->middleware('AuthGestor');
+Route::get('/disciplina/remover/{id}', 'DisciplinaController@remover')->name('/disciplina/remover')->middleware('AuthGestor');
+Route::get('/disciplina/relatorios', 'DisciplinaController@gerarRelatorios')->name('/disciplina/relatorios')->middleware('AuthTecnico');
+Route::post('/disciplina/relatorioNome', 'DisciplinaController@gerarRelatorioNome')->name('/disciplina/relatorioNome')->middleware('AuthTecnico');
 
 //rotas de avaliacao
 Route::post('/avaliacao/gravar/{id,id2}', 'AvaliacaoController@store')->name('/avaliacao/gravar')->middleware('AuthAdministrador');
