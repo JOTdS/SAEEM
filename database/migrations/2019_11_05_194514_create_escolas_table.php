@@ -17,11 +17,11 @@ class CreateEscolasTable extends Migration
             $table->bigIncrements('id');
             $table->text('nome', 200);
             $table->text('descricao', 190)->nullable();
-            $table->text('endereco', 200)->nullable;
+            $table->text('endereco', 200)->nullable();
             $table->text('telefone')->unique();
             $table->text('modalidade');
             //$table->bigInteger('gestor_id'); //Add Key
-            $table->integer('inep');
+            $table->string('inep');
             $table->timestamps();
         });
     }

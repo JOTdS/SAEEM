@@ -33,7 +33,7 @@
                                 </tbody>
                             </table>
 
-                        <a href="/escola/editar/{{$escola->usuario_id}}" class="btn btn-info">Editar</a>
+                        <a href="/escola/editar/{{$escola->id}}" class="btn btn-info">Editar</a>
                   </div>
                 </div>
             </div>
