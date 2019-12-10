@@ -75,7 +75,7 @@ class AlunoController extends Controller
         return view("/show/MostrarAluno", ["pessoa" => $pessoa, "aluno" => $aluno]);
     }
     public function listar(){
-        $alunos = \App\Aluno::All();
+        $alunos = \App\Pessoa::where('is_aluno', '=', 'true')->get();
         return view("/show/ListarAlunos", ["alunos" => $alunos]);
     }
 
@@ -87,10 +87,10 @@ class AlunoController extends Controller
      */
     public function edit($id)
     {
-        $pessoa = \App\Pessoa::where('usuario_id', '=', $id)->first();
-        $aluno = \App\Aluno::where('pessoa_id', '=', $pessoa->id)->first();
-        //$pessoa = \App\Pessoa::find($user->id);
-        //$aluno = \App\Aluno::find($pessoa->id);
+        //$pessoa = \App\Pessoa::where('usuario_id', '=', $id)->first();
+        //$aluno = \App\Aluno::where('pessoa_id', '=', $pessoa->id)->first();
+        $pessoa = \App\Pessoa::find($id);
+        $aluno = \App\Aluno::find($pessoa->id);
         return view("/edit/EditarAluno", ["pessoa" => $pessoa, "aluno" => $aluno]);
     }
 
@@ -103,8 +103,10 @@ class AlunoController extends Controller
      */
     public function update(Request $request)
     {
-        $pessoa = \App\Pessoa::where('usuario_id', '=', $request->id)->first();
-        $aluno = \App\Aluno::where('pessoa_id', '=', $pessoa->id)->first();
+        //$pessoa = \App\Pessoa::where('usuario_id', '=', $request->id)->first();
+        //$aluno = \App\Aluno::where('pessoa_id', '=', $pessoa->id)->first();
+        $pessoa = \App\Pessoa::find($request->id);
+        $aluno = \App\Aluno::find($pessoa->id);
 
         $rulesPessoas = [
             'nome' => 'required|max:100|string',
@@ -113,10 +115,6 @@ class AlunoController extends Controller
             'endereco' => 'max:255|string',
             'descricao' => 'max:255|string',
             'sexo' => 'required|max:1|string'
-        ];
-
-        $rulesUser = [
-            'email' => 'required','unique:users,email'.$user->email,'max:100|min:4|email',
         ];
 
         $request->validate(Aluno::$rules, Aluno::$messages);
