@@ -185,7 +185,8 @@ class AlunoController extends Controller
     }
 
     public function relatorio(Request $request){
-        $alunos = \App\Pessoa::where($request->tipo, $request->pesquisar)->get();
+        $pesq = '%'.$request->pesquisar.'%';
+        $alunos = \App\Pessoa::where($request->tipo, "LIKE",  $pesq)->get();
         return view("/show/ListarAlunos", ["alunos" => $alunos]);
     }
 }
