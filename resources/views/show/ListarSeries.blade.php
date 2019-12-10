@@ -30,6 +30,7 @@
                             <thead>
                               <tr>
                                   <th>Nº</th>
+                                  <th>Nome</th>
                                   <th>Modalidade</th>
                                   <th>Descricao</th>
                                   <th>Escola</th>
@@ -39,6 +40,7 @@
                               @foreach ($series as $serie)
                                 <tr>
                                     <td data-title="Nº">{{ $serie->id }}</td>
+                                    <td data-title="Nome">{{ $serie->nome }}</td>
                                     <td data-title="Modalidade">{{ $serie->modalidade }}</td>
                                     <td data-title="Descricao">{{ $serie->descricao }}</td>
                                     <?php $escola = \App\Escola::find($serie->escola_id)?>

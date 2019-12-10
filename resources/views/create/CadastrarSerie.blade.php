@@ -18,6 +18,12 @@
                       {{ csrf_field() }}
                         @csrf
                         <div class="form-group row">
+                            <label for="nome" class="col-md-4 col-form-label text-md-right">{{ __('Nome ') }}</label>
+                            <div class="col-md-6">
+                                <input name="nome" id="nome" type="text" class="form-control" value= {{ old('nome')}}> {{ $errors->first('nome')}}
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="modalidade" class="col-md-4 col-form-label text-md-right">{{ __('Modalidade ') }}</label>
                             <div class="col-md-6">
                               <input name="modalidade" id="modalidade" type="text" class="form-control" value= {{ old('modalidade')}}> {{ $errors->first('modalidade')}}

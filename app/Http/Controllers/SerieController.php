@@ -40,6 +40,7 @@ class SerieController extends Controller
         $request->validate(Serie::$rules, Serie::$messages);
         $serie = new Serie();
 
+        $serie->nome = $request->nome;
         $serie->modalidade = $request->modalidade;
         $serie->descricao = $request->descricao;
         $serie->escola_id = $request->escola_id;
@@ -88,6 +89,7 @@ class SerieController extends Controller
         $serie = \App\Serie::where('id', '=', $request->id)->first();
 
         $serie->modalidade = $request->modalidade;
+        $serie->nome = $request->nome;
         $serie->descricao = $request->descricao;
         $serie->escola_id = $request->escola_id;
         $serie->save();

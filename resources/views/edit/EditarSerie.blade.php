@@ -19,6 +19,12 @@
                         @csrf
                         <input type="hidden" name="id" value="{{$serie->id}}">
                         <div class="form-group row">
+                                <label for="nome" class="col-md-4 col-form-label text-md-right">{{ __('Nome ') }}</label>
+                                <div class="col-md-6">
+                                  <input name="nome" id="nome" type="text" class="form-control" value= {{ $serie->nome }}> {{ $errors->first('nome')}}
+                                </div>
+                            </div>
+                        <div class="form-group row">
                             <label for="modalidade" class="col-md-4 col-form-label text-md-right">{{ __('Modalidade ') }}</label>
                             <div class="col-md-6">
                               <input name="modalidade" id="modalidade" type="text" class="form-control" value= {{ $serie->modalidade }}> {{ $errors->first('modalidade')}}

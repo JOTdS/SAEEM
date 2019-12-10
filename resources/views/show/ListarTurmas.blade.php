@@ -6,10 +6,10 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                  @if (\Session::has('success'))
+                  @if (\Session::has('alert-success'))
                   <br>
                       <div class="alert alert-success">
-                          {!! \Session::get('success') !!}
+                          {!! \Session::get('alert-success') !!}
                       </div>
                   @endif
                   @if (\Session::has('alert-danger'))
@@ -31,8 +31,10 @@
                               <tr>
                                   <th>Nº</th>
                                   <th>Nome</th>
+                                  <th>Série</th>
                                   <th>Modalidade</th>
                                   <th>Descrição</th>
+
                               </tr>
                             </thead>
                             <tbody>
@@ -40,6 +42,8 @@
                                 <tr>
                                     <td data-title="Nº">{{ $turma->id }}</td>
                                     <td data-title="Nome">{{ $turma->nome }}</td>
+                                    <?php $serie = \App\Serie::find($turma->serie_id)?>
+                                    <td data-title="Série">{{ $serie->nome }}</td>
                                     <td data-title="Modalidade">{{ $turma->modalidade }}</td>
                                     <td data-title="Descricao">{{ $turma->descricao }}</td>
                                     <td class="right" data-title="Acoes">
