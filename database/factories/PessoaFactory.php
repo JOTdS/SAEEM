@@ -14,6 +14,7 @@ $factory->define(\App\Pessoa::class, function (Faker $faker) {
             'endereco' => $faker->address,
             'descricao' => $faker->text(200),
             //'password' => $faker->text(32),  //desconecatado
-            'sexo' => $sexo[$faker->numberBetween(0,1)]
+            'sexo' => $sexo[$faker->numberBetween(0,1)],
+            'usuario_id' => function(){return factory(\App\User::class)->create()->id;}
     ];
 });
